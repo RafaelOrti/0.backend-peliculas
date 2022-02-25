@@ -1,0 +1,23 @@
+{
+  "name": "backend-peliculas",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RafaelOrti/backend-peliculas.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RafaelOrti/backend-peliculas/issues"
+  },
+  "homepage": "https://github.com/RafaelOrti/backend-peliculas#readme",
+  "devDependencies": {
+    "nodemon": "2.0.15"
+  }
+}
