@@ -1,6 +1,6 @@
 const router = require('express').Router();
 
-const UsuarioRouter = require('./views/UsuarioRouter');
+const UsuarioRouter = require('./views/UsersRouter');
 const PeliculasRouter = require('./views/PeliculasRouter');
 const OrdersRouter = require('./views/OrdersRouter');
 
