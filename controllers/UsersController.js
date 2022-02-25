@@ -1,11 +1,11 @@
-const { Usuario } = require('../models/index');
+const { Users } = require('../models/index');
 
-const UsuarioController = {};
+const UsersController = {};
 
 
 //Funciones del controlador
 
-UsuarioController.traeUsuarios = (req, res) => {
+UsersController.traeUsuarios = (req, res) => {
     //Búsqueda trayendo a todos los usuarios
     Usuario.findAll()
     .then(data => {
@@ -15,7 +15,7 @@ UsuarioController.traeUsuarios = (req, res) => {
 
 };
 
-UsuarioController.traerUsuarioId = (req, res) => {
+UsersController.traerUsuarioId = (req, res) => {
     //Búsqueda buscando una Id
     Usuario.findByPk(req.params.id)
     .then(data => {
@@ -23,7 +23,7 @@ UsuarioController.traerUsuarioId = (req, res) => {
     });
 };
 
-UsuarioController.traerUsuarioEmail = (req, res) => {
+UsersController.traerUsuarioEmail = (req, res) => {
     //Búsqueda comparando un campo
     Usuario.findOne({ where : { email : req.params.email }})
     .then(data => {
@@ -64,7 +64,7 @@ UsuarioController.registraUsuario = async (req, res) => {
     
 };
 
-UsuarioController.logUsuario = (req, res) => {
+UsersController.logUsuario = (req, res) => {
 
 };
 
