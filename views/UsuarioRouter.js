@@ -22,6 +22,7 @@ router.post('/', UsuarioController.registraUsuario);
 
 //Modificar datos de un Usuario
 router.put('/newpassword', auth, UsuarioController.updatePassword);
+
 router.put('/:id', auth, UsuarioController.updateProfile);
 
 
