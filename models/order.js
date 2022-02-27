@@ -11,6 +11,12 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      this.belongsTo(models.Pelicula, {
+        foreignKey: 'peliculaId'
+      });
+      this.belongsTo(models.Usuario, {
+        foreignKey: 'usuarioId'
+      });
     }
   }
   Order.init({

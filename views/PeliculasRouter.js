@@ -14,6 +14,12 @@ router.get('/', PeliculasController.traePeliculas);
 router.post('/', PeliculasController.registraPelicula);
 //http://localhost:3000/peliculas
 
+//Búsqueda de películas por título y adulto
+router.get('/favoritas', PeliculasController.favouriteFilms);
+
+//Búsqueda de película de mayor de 18 años
+router.get('/adultos', PeliculasController.peliculasAdultas);
+
 //Búsqueda de películas por título
 router.get('/titulo', PeliculasController.peliculasTitulo);
 

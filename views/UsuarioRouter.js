@@ -14,6 +14,7 @@ router.get('/', auth,  UsuarioController.traeUsuarios);
 
 
 router.get('/email/:email', auth, UsuarioController.traerUsuarioEmail);
+
 router.get('/:id', auth, UsuarioController.traerUsuarioId);
 
 //Registro
@@ -27,7 +28,7 @@ router.put('/:id', auth, UsuarioController.updateProfile);
 
 
 //Borramos a todos los usuarios
-router.delete('/', isAdmin, UsuarioController.deleteAll);
+router.delete('/', auth, isAdmin, UsuarioController.deleteAll);
 
 //Borramos a todos los usuarios
 router.delete('/:id', auth, UsuarioController.deleteById);

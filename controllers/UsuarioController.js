@@ -81,16 +81,17 @@ UsuarioController.registraUsuario = async (req, res) => {
                     surname: surname,
                     email: email,
                     password: password,
-                    nickname: nickname
+                    nickname: nickname,
+                    rol:rol
                 }).then(usuario => {
-                    res.send(`${usuario.name}, bienvenida a este infierno`);
+                    res.send(`Bienvenido, ${usuario.name}`);
                 })
                 .catch((error) => {
                     res.send(error);
                 });
 
             }else {
-                res.send("El usuario con ese e-mail ya existe en nuestra base de datos");
+                res.send("El usuario con ese e-mail o nickname ya existe");
             }
         }).catch(error => {
             res.send(error)
