@@ -9,7 +9,9 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       name: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        //Este valor puede ser nulo
+        allowNull: false
       },
       age: {
         type: Sequelize.INTEGER
@@ -18,7 +20,9 @@ module.exports = {
         type: Sequelize.STRING
       },
       email: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false,
+        unique: true
       },
       password: {
         type: Sequelize.STRING
@@ -27,7 +31,9 @@ module.exports = {
         type: Sequelize.STRING
       },
       rol: {
-        type: Sequelize.BOOLEAN
+        type: Sequelize.BOOLEAN,
+        //este método se usa para dar un valor por defecto
+        defaultValue: false,
       },
       createdAt: {
         allowNull: false,
