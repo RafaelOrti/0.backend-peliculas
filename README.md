@@ -25,9 +25,9 @@ con las siguientes funcionalidades:
 ![Software](/img/dependencias.png)
 
 Cree una carpeta y ábrala en *Visual Studio Code* u otro editor de código.
-Clone el repositorio. *`https://github.com/suku60/BackendFilmDatabase02-22`*
+Clone el repositorio. *`git@github.com:RafaelOrti/backend-peliculas.git`*
 ```bash
-clon de git https://github.com/suku60/BackendFilmDatabase02-22
+git clone git@github.com:RafaelOrti/backend-peliculas.git
 ```
 
 En primer lugar, debemos instalar una serie de dependencias necesarias para nuestro proyecto utilizando el administrador de paquetes npm.
