@@ -81,15 +81,21 @@ Requisitos de datos de usuario:
 
 `{`
 
-   ` "nombre" : <insertar nombre aquí>`,
+   ` "name" : <insertar nombre aquí>`,
 
-   ` "fecha de nacimiento": <inserte aquí la fecha de nacimiento con este formato: '1000-01-01 00:00:00'>`,
+   ` "age": <inserte aquí la fecha de nacimiento con este formato: '1000-01-01 00:00:00'>`,
 
-   ` "nickname": <inserte nombre de usuario aquí>`,
+   ` "surname": <inserte apellido de usuario aquí>`,
+
+   `"email": <insertar correo electrónico aquí>`
 
    `"password": <inserte la contraseña aquí>`,
 
-   `"correo electrónico": <insertar correo electrónico aquí>`
+   ` "nickname": <inserte nickname de usuario aquí>`,
+
+   ` "rol": <inserte rol de usuario aquí>`,
+
+   
    
 `}`
 
@@ -144,17 +150,17 @@ Requisitos de la película:
 
 `{`
 
-   `"título": <insertar título aquí>`,
+   `"titulo": <insertar título aquí>`,
 
-   ` "año": <inserte el año aquí con este formato '1000-01-01 00:00:00'>`,
+   ` "sinopsis": <inserte la sinopsis aquí`,
 
    ` "adulto" : <verdadero o falso>`,
 
-   `"popularidad": <insertar popularidad aquí>`,
+   `"popularity": <insertar popularidad aquí>`,
 
-   `"imagen": <insertar imagen aquí>`
+   `"image": <insertar imagen aquí>`
    
-   ` descripción : <insertar descripción aquí>`
+   `"fecha" : <insertar fecha aquí>`
    
 `}`
 
@@ -221,17 +227,14 @@ Método DELETE: eliminar una película por id
 Requisitos de pedido:
 
 `{`
+   `price: <insertar precio aquí>`
+   
+   ` peliculaId : <inserte movieId aquí>`
 
-   ` ID de usuario: <insertar ID de usuario aquí>`
-
-   ` movieId : <inserte movieId aquí>`
+   ` usuarioId: <insertar ID de usuario aquí>`
 
    ` fecha: <inserte la fecha aquí con este formato '1000-01-01 00:00:00'>`
 
-   `precio: <insertar precio aquí>`
-
-   ` activo : <verdadero o falso>`
-   
 `}`
 
 
