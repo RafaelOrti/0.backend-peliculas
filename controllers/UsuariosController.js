@@ -1,18 +1,18 @@
 
-const { Usuario } = require('../models/index');
+const { Usuarios } = require('../models/index');
 const { Op } = require("sequelize");
 const bcrypt = require('bcrypt');
 const authConfig = require('../config/auth');
 const jwt = require('jsonwebtoken');
 
-const UsuarioController = {};
+const UsuariosController = {};
 
 
 //Funciones del controlador
 
-UsuarioController.traeUsuarios = (req, res) => {
-    //Búsqueda trayendo a todos los usuarios
-    Usuario.findAll()
+UsuariosController.traeUsuarios = (req, res) => {
+    //Búsqueda trayendo a todos los Usuarios
+    Usuarios.findAll()
     .then(data => {
 
         res.send(data)
@@ -20,25 +20,25 @@ UsuarioController.traeUsuarios = (req, res) => {
 
 };
 
-UsuarioController.traerUsuarioId = (req, res) => {
+UsuariosController.traerUsuariosId = (req, res) => {
     //Búsqueda buscando una Id
-    Usuario.findByPk(req.params.id)
+    Usuarios.findByPk(req.params.id)
     .then(data => {
         res.send(data)
     });
 };
 
-UsuarioController.traerUsuarioEmail = (req, res) => {
+UsuariosController.traerUsuariosEmail = (req, res) => {
     //Búsqueda comparando un campo
-    Usuario.findOne({ where : { email : req.params.email }})
+    Usuarios.findOne({ where : { email : req.params.email }})
     .then(data => {
         res.send(data)
     });
 }
 
-UsuarioController.registraUsuario = async (req, res) => {
+UsuariosController.registraUsuarios = async (req, res) => {
     
-    //Registrando un usuario
+    //Registrando un Usuarios
     
         let name = req.body.name;
         let age = req.body.age;
@@ -52,9 +52,9 @@ UsuarioController.registraUsuario = async (req, res) => {
         console.log("este es el password", password);
         //Comprobación de errores.....
         
-        //Guardamos en sequelize el usuario
+        //Guardamos en sequelize el Usuarios
 
-        Usuario.findAll({
+        Usuarios.findAll({
             where : {
 
                 [Op.or] : [
@@ -76,7 +76,7 @@ UsuarioController.registraUsuario = async (req, res) => {
 
             if(datosRepetidos == 0){
 
-                    Usuario.create({
+                    Usuarios.create({
                     name: name,
                     age: age,
                     surname: surname,
@@ -84,15 +84,15 @@ UsuarioController.registraUsuario = async (req, res) => {
                     password: password,
                     nickname: nickname,
                     rol,rol
-                }).then(usuario => {
-                    res.send(`Bienvenido, ${usuario.name}`);
+                }).then(Usuarios => {
+                    res.send(`Bienvenido, ${Usuarios.name}`);
                 })
                 .catch((error) => {
                     res.send(error);
                 });
 
             }else {
-                res.send("El usuario con ese e-mail o nickname ya existe");
+                res.send("El Usuario con ese e-mail o nickname ya existe");
             }
         }).catch(error => {
             res.send(error)
@@ -102,7 +102,7 @@ UsuarioController.registraUsuario = async (req, res) => {
     
 };
 
-UsuarioController.updateProfile = async (req, res) => {
+UsuariosController.updateProfile = async (req, res) => {
 
     let datos = req.body;
 
@@ -110,7 +110,7 @@ UsuarioController.updateProfile = async (req, res) => {
 
     try {
 
-        Usuario.update(datos, {
+        Usuarios.update(datos, {
             where: {id : id}
         })
         .then(actualizado => {
@@ -123,7 +123,7 @@ UsuarioController.updateProfile = async (req, res) => {
 
 };
 
-UsuarioController.updatePassword = (req,res) => {
+UsuariosController.updatePassword = (req,res) => {
 
     console.log("entramos");
 
@@ -133,13 +133,13 @@ UsuarioController.updatePassword = (req,res) => {
 
     let newPassword = req.body.newPassword;
 
-    Usuario.findOne({
+    Usuarios.findOne({
         where : { id : id}
-    }).then(usuarioFound => {
+    }).then(UsuariosFound => {
 
-        if(usuarioFound){
+        if(UsuariosFound){
 
-            if (bcrypt.compareSync(oldPassword, usuarioFound.password)) {
+            if (bcrypt.compareSync(oldPassword, UsuariosFound.password)) {
 
                 //En caso de que el Password antiguo SI sea el correcto....
 
@@ -157,7 +157,7 @@ UsuarioController.updatePassword = (req,res) => {
 
                 console.log("esto es data",data);
                 
-                Usuario.update(data, {
+                Usuarios.update(data, {
                     where: {id : id}
                 })
                 .then(actualizado => {
@@ -168,12 +168,12 @@ UsuarioController.updatePassword = (req,res) => {
                 });
 
             }else{
-                res.status(401).json({ msg: "Usuario o contraseña inválidos" });
+                res.status(401).json({ msg: "Usuarios o contraseña inválidos" });
             }
 
 
         }else{
-            res.send(`Usuario no encontrado`);
+            res.send(`Usuarios no encontrado`);
         }
 
     }).catch((error => {
@@ -182,16 +182,16 @@ UsuarioController.updatePassword = (req,res) => {
 
 };
 
-UsuarioController.deleteAll = async (req, res) => {
+UsuariosController.deleteAll = async (req, res) => {
 
     try {
 
-        Usuario.destroy({
+        Usuarios.destroy({
             where : {},
             truncate : false
         })
-        .then(usuariosEliminados => {
-            res.send(`Se han eliminado ${usuariosEliminados} usuarios`);
+        .then(UsuariossEliminados => {
+            res.send(`Se han eliminado ${UsuariossEliminados} Usuarioss`);
         })
 
     } catch (error) {
@@ -200,19 +200,19 @@ UsuarioController.deleteAll = async (req, res) => {
 
 };
 
-UsuarioController.deleteById = async (req, res) => {
+UsuariosController.deleteById = async (req, res) => {
 
     let id = req.params.id;
 
     try {
 
-        Usuario.destroy({
+        Usuarios.destroy({
             where : { id : id },
             truncate : false
         })
-        .then(usuarioEliminado => {
-            console.log(usuarioEliminado);
-            res.send(`El usuario con la id ${id} ha sido eliminado`);
+        .then(UsuariosEliminado => {
+            console.log(UsuariosEliminado);
+            res.send(`El Usuarios con la id ${id} ha sido eliminado`);
         })
 
     } catch (error) {
@@ -222,35 +222,35 @@ UsuarioController.deleteById = async (req, res) => {
 };
 
 
-UsuarioController.logUsuario = (req, res) => {
+UsuariosController.logUsuarios = (req, res) => {
 
     let correo = req.body.email;
     let password = req.body.password;
 
-    Usuario.findOne({
+    Usuarios.findOne({
         where : {email : correo}
-    }).then(Usuario => {
+    }).then(Usuarios => {
 
-        if(!Usuario){
-            res.send("Usuario o contraseña inválido");
+        if(!Usuarios){
+            res.send("Usuarios o contraseña inválido");
         }else {
-            //el usuario existe, por lo tanto, vamos a comprobar
+            //el Usuarios existe, por lo tanto, vamos a comprobar
             //si el password es correcto
 
-            if (bcrypt.compareSync(password, Usuario.password)) { //COMPARA CONTRASEÑA INTRODUCIDA CON CONTRASEÑA GUARDADA, TRAS DESENCRIPTAR
+            if (bcrypt.compareSync(password, Usuarios.password)) { //COMPARA CONTRASEÑA INTRODUCIDA CON CONTRASEÑA GUARDADA, TRAS DESENCRIPTAR
 
-                console.log(Usuario.password);
+                console.log(Usuarios.password);
 
-                let token = jwt.sign({ usuario: Usuario }, authConfig.secret, {
+                let token = jwt.sign({ Usuarios: Usuarios }, authConfig.secret, {
                     expiresIn: authConfig.expires
                 });
 
                 res.json({
-                    usuario: Usuario,
+                    Usuarios: Usuarios,
                     token: token
                 })
             } else {
-                res.status(401).json({ msg: "Usuario o contraseña inválidos" });
+                res.status(401).json({ msg: "Usuarios o contraseña inválidos" });
             }
         };
 
@@ -260,4 +260,4 @@ UsuarioController.logUsuario = (req, res) => {
     })
 };
 
-module.exports = UsuarioController;
+module.exports = UsuariosController;
