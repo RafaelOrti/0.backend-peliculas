@@ -77,7 +77,7 @@ Ahora podrá leer y modificar datos de *Postman*.
 
 ### ***endpoints de usuario***
 
-Requisitos de datos de usuario:
+Campos de usuario:
 
 `{`
 
@@ -102,7 +102,7 @@ Requisitos de datos de usuario:
 
 #### - ***crear nuevos usuarios***
 - ``
-http://localhost:3000/usuarios/nuevo``
+http://localhost:3000/usuarios/``
 
 Método POST: crear un nuevo usuario
 
@@ -124,12 +124,6 @@ http://localhost:3000/usuarios/:id``
 Método PUT: modificar datos de usuario
 
 
-- ``
-http://localhost:3000/usuarios/:id/levelup``
-
-Método PUT: subir de nivel los datos del usuario
-
-
 #### - ***eliminar datos de usuario***
 
 ##### **Se necesitan privilegios de administrador**
@@ -144,9 +138,9 @@ Método DELETE: eliminar usuario por id
 
 ***
 
-### ***Puntos finales de películas***
+### ***Endpoints de películas***
 
-Requisitos de la película:
+Campos de películas:
 
 `{`
 
@@ -168,7 +162,7 @@ Requisitos de la película:
 #### - ***añadir nuevas películas***
 
 - ``
-http://localhost:3000/películas/nuevo``
+http://localhost:3000/películas/``
 
 Método POST: agregar una nueva película
 
@@ -182,13 +176,13 @@ Método GET: muestra una lista de todas las películas
 
 
 - ``
-http://localhost:3000/movies/newest``
+http://localhost:3000/movies/novedades``
 
 Método GET: muestra las películas más recientes
 
 
 - ``
-http://localhost:3000/películas/adulto``
+http://localhost:3000/películas/adultos``
 
 
 Método GET: muestra una lista de películas para adultos
@@ -198,25 +192,9 @@ Método GET: muestra una lista de películas para adultos
 
 ##### **JWT (privilegios de usuario) o privilegios de administrador necesarios**
 
-- ``
-http://localhost:3000/movies/update/:id``
-
-Método PUT: actualizar/modificar datos de películas por id.
-
-
 #### - ***eliminar películas***
 
 ##### **Se necesitan privilegios de administrador**
-
-- ``
-http://localhost:3000/movies/delete/all``
-
-Método DELETE: elimina todas las películas
-
-- ``
-http://localhost:3000/movies/delete/:id``
-
-Método DELETE: eliminar una película por id
 
 ***
 
@@ -224,7 +202,7 @@ Método DELETE: eliminar una película por id
 
 ##### **JWT (privilegios de usuario) o privilegios de administrador necesarios**
 
-Requisitos de pedido:
+Campos de pedido:
 
 `{`
    `price: <insertar precio aquí>`
@@ -249,40 +227,12 @@ Método GET: muestra una lista de todos los pedidos
 http://localhost:3000/pedidos/nuevo``
 
 Método POST: crear un nuevo pedido
-
-
-#### - ***mostrar pedidos por estado o id***
-
-- ``
-http://localhost:3000/orders/active ``
-
-Método GET: muestra una lista de todas las órdenes activas
-
-- ``
-http://localhost:3000/pedidos/:id``
-
-Método PUT: actualizar los datos del pedido
-
-
-#### - ***eliminar pedidos***
-
-- ``
-http://localhost:3000/orders/delete/all``
-
-Método DELETE: eliminar todos los pedidos
-
-- ``
-http://localhost:3000/orders/delete/:id/``
-
-Método DELETE: eliminar un pedido por id
-
 ***
-#### ***Privilegios de nivel explicados***
+
+#### ***Privilegios de nivel***
 
   
 
 Los usuarios genéricos pueden explorar nuestra base de datos y crear solicitudes para un pedido.
 
 Los usuarios de nivel Admin podrán crear un máximo de 5 pedidos cada mes cuando lo deseen.
-
-Actualiza a nivel pagando la suscripción mensual
