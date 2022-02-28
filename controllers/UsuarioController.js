@@ -10,6 +10,9 @@ const UsuarioController = {};
 
 //Funciones del controlador
 
+//////////Lectura de usuarios//////////
+//Leer todos los usuarios
+//http://localhost:3000/usuarios/
 UsuarioController.traeUsuarios = (req, res) => {
     //Búsqueda trayendo a todos los usuarios
     Usuario.findAll()
@@ -20,6 +23,8 @@ UsuarioController.traeUsuarios = (req, res) => {
 
 };
 
+//Lee usuarios por id
+//http://localhost:3000/usuarios/:id
 UsuarioController.traerUsuarioId = (req, res) => {
     //Búsqueda buscando una Id
     Usuario.findByPk(req.params.id)
@@ -28,14 +33,22 @@ UsuarioController.traerUsuarioId = (req, res) => {
     });
 };
 
+//Lee usuarios por email
+//http://localhost:3000/usuarios/email/:email
 UsuarioController.traerUsuarioEmail = (req, res) => {
     //Búsqueda comparando un campo
     Usuario.findOne({ where : { email : req.params.email }})
     .then(data => {
         res.send(data)
     });
-}
+};
 
+//////////Lectura de usuarios//////////
+
+//////////Registro y modificación de usuarios//////////
+
+//Registro de usuarios
+//http://localhost:3000/usuarios/registrar
 UsuarioController.registraUsuario = async (req, res) => {
     
     //Registrando un usuario
@@ -102,26 +115,8 @@ UsuarioController.registraUsuario = async (req, res) => {
     
 };
 
-UsuarioController.updateProfile = async (req, res) => {
-
-    let datos = req.body;
-
-    let id = req.params.id;
-
-    try {
-
-        Usuario.update(datos, {
-            where: {id : id}
-        })
-        .then(actualizado => {
-            res.send(actualizado);
-        });
-
-    } catch (error) {
-        res.send(error);
-    }
-
-};
+//Modificar datos de un Usuario
+//http://localhost:3000/usuarios/newpassword
 
 UsuarioController.updatePassword = (req,res) => {
 
@@ -182,6 +177,36 @@ UsuarioController.updatePassword = (req,res) => {
 
 };
 
+//Modificar datos de un perfil
+//http://localhost:3000/usuarios/:id
+UsuarioController.updateProfile = async (req, res) => {
+
+    let datos = req.body;
+
+    let id = req.params.id;
+
+    try {
+
+        Usuario.update(datos, {
+            where: {id : id}
+        })
+        .then(actualizado => {
+            res.send(actualizado);
+        });
+
+    } catch (error) {
+        res.send(error);
+    }
+
+};
+
+//////////Registro y modificación de usuarios//////////
+
+
+//////////Eliminación de usuarios//////////
+
+//Borramos a todos los usuarios
+//http://localhost:3000/usuarios
 UsuarioController.deleteAll = async (req, res) => {
 
     try {
@@ -200,6 +225,8 @@ UsuarioController.deleteAll = async (req, res) => {
 
 };
 
+//Borramos a los usuarios por id
+//http://localhost:3000/usuarios/:id
 UsuarioController.deleteById = async (req, res) => {
 
     let id = req.params.id;
@@ -221,7 +248,12 @@ UsuarioController.deleteById = async (req, res) => {
 
 };
 
+//////////Eliminación de usuarios//////////
 
+
+//////////Login de usuarios//////////
+
+//Login
 UsuarioController.logUsuario = (req, res) => {
 
     let correo = req.body.email;
@@ -259,5 +291,6 @@ UsuarioController.logUsuario = (req, res) => {
         res.send(error);
     })
 };
+//////////Login de usuarios//////////
 
 module.exports = UsuarioController;
