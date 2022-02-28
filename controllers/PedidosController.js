@@ -1,7 +1,7 @@
 
-const { Order } = require('../models/index');
+const { Pedido } = require('../models/index');
 
-const OrdersController = {};
+const PedidosController = {};
 
 
 //Creacion de pedido en DB propia
@@ -9,31 +9,8 @@ PedidosController.nuevoPedido = async (req, res) => {
 
     let body = req.body;
 
-    //////////////INTENTO DE CREAR PEDIDO POR RAW SQL /////////////////
-
-    // let fechaPedido = '2022-02-27 14:31:39'
-
-    // let consulta = `INSERT INTO orders (precio, peliculaId, usuarioId, fechaEntrega, createdAt, updatedAt) 
-    //  VALUES ('${body.precio}', '${body.peliculaId}', '${body.usuarioId}', '${body.fechaEntrega}', '${fechaPedido}', '${fechaPedido}');`;
-
-    // try {
-    //     let resultado = await Order.sequelize.query(consulta, {
-    //         type: Order.sequelize.QueryTypes.INSERT
-    //     });
-
-    //     if (resultado) {
-    //         res.send(resultado);
-    //     } else {
-    //         res.send("Ha ocurrido algun error al hacer la consulta")
-    //     }
-
-    // } catch (error) {
-    //     res.send(error)
-    // }
-
-
     //////////////OPCION INICIAL PARA CREAR PEDIDO /////////////////
-    Order.create({
+    Pedido.create({
         precio: body.precio,
         peliculaId: body.peliculaId,
         usuarioId: body.usuarioId,
@@ -54,11 +31,11 @@ PedidosController.nuevoPedido = async (req, res) => {
 //Buscamos Pedidos Todos los pedidos en DB
 PedidosController.todosPedidos = async (req, res) => {
 
-    let consulta = `SELECT * FROM orders`;
+    let consulta = `SELECT * FROM pedidos`;
 
     try {
-        let resultado = await Order.sequelize.query(consulta, {
-            type: Order.sequelize.QueryTypes.SELECT
+        let resultado = await Pedido.sequelize.query(consulta, {
+            type: Pedido.sequelize.QueryTypes.SELECT
         });
 
         if (resultado) {
@@ -77,11 +54,11 @@ PedidosController.todosPedidos = async (req, res) => {
 //Borramos todos los pedidos en DB
 PedidosController.borrarTodos = async (req, res) => {
 
-    let consulta = `DELETE FROM orders`;
+    let consulta = `DELETE FROM pedidos`;
 
     try {
-        let resultado = await Order.sequelize.query(consulta, {
-            type: Order.sequelize.QueryTypes.DELETE
+        let resultado = await Pedido.sequelize.query(consulta, {
+            type: Pedido.sequelize.QueryTypes.DELETE
         });
 
         if (resultado != 0) {
@@ -104,13 +81,13 @@ PedidosController.infoPedidoAvanzado = async (req, res) => {
                             usuarios.edad AS Edad,  
                             peliculas.titulo AS Titulo_Alquilado , 
                             peliculas.genero AS Genero, 
-                            orders.fechaEntrega AS Fecha_Alquiler
+                            pedidos.fechaEntrega AS Fecha_Alquiler
                     FROM usuarios 
-                            INNER JOIN orders ON usuarios.id = orders.usuarioId 
-                            INNER JOIN peliculas ON peliculas.id = orders.peliculaId `;
+                            INNER JOIN pedidos ON usuarios.id = pedidos.usuarioId 
+                            INNER JOIN peliculas ON peliculas.id = pedidos.peliculaId `;
     try {
-        let resultado = await Order.sequelize.query(consulta, {
-            type: Order.sequelize.QueryTypes.SELECT
+        let resultado = await Pedido.sequelize.query(consulta, {
+            type: Pedido.sequelize.QueryTypes.SELECT
         });
 
         if (resultado) {
@@ -126,31 +103,6 @@ PedidosController.infoPedidoAvanzado = async (req, res) => {
 
 }
 
-
-//Busqueda de Usuarios Menores con peliculas para adultos Alquiladas
-PedidosController.paterntalAlert = async (req, res) => {
-
-    let consulta = `SELECT  usuarios.nombre AS Nombre,
-                            usuarios.email AS correo, 
-                            usuarios.edad AS Edad,  
-                            peliculas.adult AS Adultos, 
-                            peliculas.titulo AS Titulo_Alquilado
-                    FROM usuarios 
-                            INNER JOIN orders ON usuarios.id = orders.usuarioId 
-                            INNER JOIN peliculas ON peliculas.id = orders.peliculaId
-                    WHERE edad < 18 AND adult = 1 ORDER BY edad DESC`;
-
-    let resultado = await Order.sequelize.query(consulta, {
-        type: Order.sequelize.QueryTypes.SELECT
-    });
-
-    if (resultado) {
-        res.send(resultado);
-    }
-
-}
-
-
 //Busqueda avanzada de Usuarios con alquiler
 PedidosController.infoUsuarios = async (req, res) => {
 
@@ -158,16 +110,14 @@ PedidosController.infoUsuarios = async (req, res) => {
                             usuarios.apellido AS Apellido,
                             usuarios.email AS correo, 
                             usuarios.edad AS Edad,
-                            usuarios.telefono AS NºTelefono,
-                            usuarios.dni AS DNI,
                             peliculas.titulo AS Titulo_Alquilado,
-                            orders.fechaEntrega AS Fecha_Alquiler
+                            pedidos.fechaEntrega AS Fecha_Alquiler
                     FROM usuarios 
-                            INNER JOIN orders ON usuarios.id = orders.usuarioId
-                            INNER JOIN peliculas ON peliculas.id = orders.peliculaId `;
+                            INNER JOIN pedidos ON usuarios.id = pedidos.usuarioId
+                            INNER JOIN peliculas ON peliculas.id = pedidos.peliculaId `;
     try {
-        let resultado = await Order.sequelize.query(consulta, {
-            type: Order.sequelize.QueryTypes.SELECT
+        let resultado = await Pedido.sequelize.query(consulta, {
+            type: Pedido.sequelize.QueryTypes.SELECT
         });
 
         if (resultado) {
@@ -193,15 +143,15 @@ PedidosController.pedidoNombre = async (req, res) => {
                             usuarios.edad AS Edad,  
                             peliculas.titulo AS Titulo_Alquilado , 
                             peliculas.genero AS Genero, 
-                            orders.fechaEntrega AS Fecha_Alquiler
+                            pedidos.fechaEntrega AS Fecha_Alquiler
                     FROM usuarios 
-                            INNER JOIN orders ON usuarios.id = orders.usuarioId 
-                            INNER JOIN peliculas ON peliculas.id = orders.peliculaId
+                            INNER JOIN pedidos ON usuarios.id = pedidos.usuarioId 
+                            INNER JOIN peliculas ON peliculas.id = pedidos.peliculaId
                     WHERE nombre LIKE '%${nombre}%'`;
     
     try {
-        let resultado = await Order.sequelize.query(consulta, {
-            type: Order.sequelize.QueryTypes.SELECT
+        let resultado = await Pedido.sequelize.query(consulta, {
+            type: Pedido.sequelize.QueryTypes.SELECT
         });
 
         if (resultado) {
@@ -221,12 +171,12 @@ PedidosController.borrarNombre = async (req, res) => {
     
     let nombre = req.params.nombre
 
-    let consulta = `DELETE FROM orders 
-    INNER JOIN usuarios ON usuarios.id = orders.usuarioId WHERE (nombre = '${nombre}');`;
+    let consulta = `DELETE FROM pedidos 
+    INNER JOIN usuarios ON usuarios.id = pedidos.usuarioId WHERE (nombre = '${nombre}');`;
 
     try {
-        let resultado = await Order.sequelize.query(consulta, {
-            type: Order.sequelize.QueryTypes.DELETE
+        let resultado = await Pedido.sequelize.query(consulta, {
+            type: Pedido.sequelize.QueryTypes.DELETE
         });
 
         if (resultado != 0) {
@@ -245,11 +195,11 @@ PedidosController.borrarPorId = async (req, res) => {
 
     let id = req.params.id
 
-    let consulta = `DELETE FROM orders WHERE (id = ${id});`;
+    let consulta = `DELETE FROM pedidos WHERE (id = ${id});`;
 
     try {
-        let resultado = await Order.sequelize.query(consulta, {
-            type: Order.sequelize.QueryTypes.DELETE
+        let resultado = await Pedido.sequelize.query(consulta, {
+            type: Pedido.sequelize.QueryTypes.DELETE
         });
 
         if (resultado != 0) {

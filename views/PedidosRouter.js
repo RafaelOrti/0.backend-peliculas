@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const auth = require('../middlewares/auth')
 
-const OrdersController = require('../controllers/PedidosController');
+const PedidosController = require('../controllers/PedidosController');
 
 
 //Creamos Un pedido nuevo
@@ -21,9 +21,7 @@ router.delete('/', auth, PedidosController.borrarTodos)
 router.get('/avanzado', auth, PedidosController.infoPedidoAvanzado)
 //http://localhost:3000/pedidos/avanzado
 
-//Busqueda de Usuarios Menores con peliculas para adultos Alquiladas
-router.get('/paterntalAlert', auth, PedidosController.paterntalAlert)
-//http://localhost:3000/pedidos/paterntalAlert
+
 
 //Busqueda avanzada de Usuarios con alquiler
 router.get('/avanzado/usuarios', auth, PedidosController.infoUsuarios)

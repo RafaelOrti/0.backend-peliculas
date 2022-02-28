@@ -1,8 +1,7 @@
-const { default: axios } = require("axios");
-const { Pelicula } = require('../models/index');
-const { Op } = require("sequelize");
-const { compareSync } = require("bcrypt");
+const axios = require('axios');
 const PeliculasController = {};
+const { Pelicula } = require('../models/index');
+const { Op } = require('sequelize')
 
 
 
@@ -103,7 +102,7 @@ PeliculasController.buscaGenero = (req, res) => {
 
 
 //Busca peliculas por Adult En propia BD
-PeliculasController.buscaAdult = (req, res) => {
+PeliculasController.peliculasAdultos = (req, res) => {
 
     Pelicula.findAll({
         where: {
@@ -122,6 +121,50 @@ PeliculasController.buscaAdult = (req, res) => {
     })
 
 }
+
+
+PeliculasController.peliculasFavoritas = (req,res) => {
+
+
+    let titulo = req.query.titulo;
+    let adult = req.query.adult;
+    let popularity = req.query.popularity;
+
+    Pelicula.findAll({
+        where : {
+
+            [Op.and] : [
+                {
+                    titulo : {
+                        [Op.like] : titulo
+                    }
+                },
+                {
+                    adult : {
+                        [Op.like] : adult
+                    }
+                },
+                {
+                    popularity : {
+                        [Op.like] : popularity
+                    }
+                }
+            ]
+
+        }
+    }).then(films => {
+
+        if(films != 0){
+            res.send(films);
+        }else {
+            res.send(`Película no encontrada`);
+        };
+
+    }).catch(error => {
+        res.send(error);
+    })
+}
+
 
 
 //Buscar Peliculas por Genero y Titulo en propia DB
@@ -195,6 +238,9 @@ PeliculasController.traeNovedades = async (req, res) => {
 }
 
 
+
+
+
 //Busca Ultimas peliculas en MovieDB
 PeliculasController.peliculasUltimas = async (req, res) => {
 
@@ -205,6 +251,7 @@ PeliculasController.peliculasUltimas = async (req, res) => {
         console.log("El error es: ", error.response.status, error.response.statusText)
     }
 }
+
 
 
 // Traemos las peliculas con mejor nota -- /mejor_valoradas
