@@ -14,13 +14,19 @@ module.exports = {
         allowNull: false
       },
       apellido: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false
       },
       nickname: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false,
+        unique: true
       },
       edad: {
         type: Sequelize.INTEGER
+        ,
+        allowNull: false,
+        defaultValue: 0
       },
       email: {
         type: Sequelize.STRING,
@@ -30,13 +36,15 @@ module.exports = {
       rol: {
         type: Sequelize.BOOLEAN,
         //este método se usa para dar un valor por defecto
-        defaultValue: false,
+        defaultValue: false
       },
       password: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false
       }, 
       numeroCuenta: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        defaultValue: "no indicado"
       }, 
       createdAt: {
         allowNull: false,

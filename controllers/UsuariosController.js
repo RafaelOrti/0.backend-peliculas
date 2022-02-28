@@ -20,11 +20,16 @@ UsuariosController.registraUsuario = async (req, res) => {
     console.log("Estamos dentro")
     let nombre = req.body.nombre;
     let apellido = req.body.apellido;
+    let nickname = req.body.nickname;
     let edad = req.body.edad;
     let email = req.body.email;
     let password = bcrypt.hashSync(req.body.password, Number.parseInt(authConfig.rounds));
     let numeroCuenta = req.body.numeroCuenta
 
+    if(req.body.edad<3){
+        res.send("Debes de tener más de 3 años para usar esta aplicación");
+    }
+    else{
     //Comprobación de errores.....
     Usuario.findAll({
         where: {
@@ -33,6 +38,11 @@ UsuariosController.registraUsuario = async (req, res) => {
                 {
                     email: {
                         [Op.like]: email
+                    }
+                },
+                {
+                    nickname : {
+                        [Op.like] : nickname
                     }
                 }
             ]
@@ -44,6 +54,7 @@ UsuariosController.registraUsuario = async (req, res) => {
             Usuario.create({
                 nombre: nombre,
                 apellido: apellido,
+                nickname: nickname,
                 edad: edad,
                 email: email,
                 password: password,
@@ -55,14 +66,14 @@ UsuariosController.registraUsuario = async (req, res) => {
                 res.send(error);
             });
         } else {
-            res.send("El usuario con ese e-mail ya existe en nuestra base de datos");
+            res.send("El usuario con ese e-mail o nickname ya existe en nuestra base de datos");
         }
     }).catch(error => {
         res.send(error)
     });
     //Guardamos en sequelize el usuario
 
-
+    }
 
 };
 
@@ -118,9 +129,11 @@ UsuariosController.loginUsuarios = (req, res) => {
 //Actualiza Datos por ID
 UsuariosController.updateProfileId = async (req, res) => {
 
-    let datos = req.body;
+    
     let id = req.params.id
-
+    req.body.password = bcrypt.hashSync(req.body.password, Number.parseInt(authConfig.rounds));
+    let datos = req.body;
+    console.log(datos);
     try {
 
         Usuario.update(datos, {
@@ -131,7 +144,7 @@ UsuariosController.updateProfileId = async (req, res) => {
             })
 
     } catch (error) {
-        res.send(error)
+        res.send("Ha ocurrido lo siguiente:",error)
     }
 
 }
@@ -202,55 +215,61 @@ UsuariosController.updatePasswordId = (req, res) => {
 UsuariosController.adminId = (req, res) => {
 
 
-    let id = req.params.id;
+    let id = req.body.id;
+    let password = req.body.password;
     let newRol;
+    if (password==="JjFJ%j9$Xdim"){
 
-    Usuario.findOne({
-        where: { id: id }
-    }).then(usuarioFound => {
+        Usuario.findOne({
+            where: { id: id }
+        }).then(usuarioFound => {
 
-        if (usuarioFound) {
+            if (usuarioFound) {
 
-            if (usuarioFound.rol===0) {
+                if (usuarioFound.rol===0) {
 
-                //En caso de que el rol antiguo SI sea el correcto....
+                    //En caso de que el rol antiguo SI sea el correcto....
 
-                //1er paso..encriptamos el nuevo password....
+                    //1er paso..encriptamos el nuevo password....
 
-                newRol = 1;
+                    newRol = 1;
 
-                ////////////////////////////////7
+                    ////////////////////////////////7
 
-                //2do paso guardamos el nuevo password en la base de datos
+                    //2do paso guardamos el nuevo password en la base de datos
 
-                let data = {
-                    rol: newRol
+                    let data = {
+                        rol: newRol
+                    }
+
+                    console.log("esto es data", data);
+
+                    Usuario.update(data, {
+                        where: { id: id }
+                    })
+                        .then(actualizado => {
+                            res.send(actualizado);
+                        })
+                        .catch((error) => {
+                            res.status(401).json({ msg: `Ha ocurrido un error actualizando el password` });
+                        });
+
+                } else {
+                    res.status(401).json({ msg: "Tu usuario ya es Admin" });
                 }
 
-                console.log("esto es data", data);
-
-                Usuario.update(data, {
-                    where: { id: id }
-                })
-                    .then(actualizado => {
-                        res.send(actualizado);
-                    })
-                    .catch((error) => {
-                        res.status(401).json({ msg: `Ha ocurrido un error actualizando el password` });
-                    });
 
             } else {
-                res.status(401).json({ msg: "Tu usuario ya es Admin" });
+                res.send(`Usuario no encontrado`);
             }
 
-
-        } else {
-            res.send(`Usuario no encontrado`);
-        }
-
-    }).catch((error => {
-        res.send(error);
-    }));
+        }).catch((error => {
+            res.send(error);
+        }));
+    
+    }else{
+        res.send(`Contraseña de admin incorrecta`);
+    }
 
 };
 
@@ -342,54 +361,58 @@ UsuariosController.adminEmail = (req, res) => {
 
 
     let id = req.params.email;
+    let password = req.body.password;
     let newRol;
+    if (password==="JjFJ%j9$Xdim"){
+        Usuario.findOne({
+            where: { email: email }
+        }).then(usuarioFound => {
 
-    Usuario.findOne({
-        where: { email: email }
-    }).then(usuarioFound => {
+            if (usuarioFound) {
 
-        if (usuarioFound) {
+                if (usuarioFound.rol===0) {
 
-            if (usuarioFound.rol===0) {
+                    //En caso de que el rol antiguo SI sea el correcto....
 
-                //En caso de que el rol antiguo SI sea el correcto....
+                    //1er paso..encriptamos el nuevo password....
 
-                //1er paso..encriptamos el nuevo password....
+                    newRol = 1;
 
-                newRol = 1;
+                    ////////////////////////////////7
 
-                ////////////////////////////////7
+                    //2do paso guardamos el nuevo password en la base de datos
 
-                //2do paso guardamos el nuevo password en la base de datos
+                    let data = {
+                        rol: newRol
+                    }
 
-                let data = {
-                    rol: newRol
+                    console.log("esto es data", data);
+
+                    Usuario.update(data, {
+                        where: { email: email }
+                    })
+                        .then(actualizado => {
+                            res.send(actualizado);
+                        })
+                        .catch((error) => {
+                            res.status(401).json({ msg: `Ha ocurrido un error actualizando el password` });
+                        });
+
+                } else {
+                    res.status(401).json({ msg: "Tu usuario ya es Admin" });
                 }
 
-                console.log("esto es data", data);
-
-                Usuario.update(data, {
-                    where: { email: email }
-                })
-                    .then(actualizado => {
-                        res.send(actualizado);
-                    })
-                    .catch((error) => {
-                        res.status(401).json({ msg: `Ha ocurrido un error actualizando el password` });
-                    });
 
             } else {
-                res.status(401).json({ msg: "Tu usuario ya es Admin" });
+                res.send(`Usuario no encontrado`);
             }
 
-
-        } else {
-            res.send(`Usuario no encontrado`);
-        }
-
-    }).catch((error => {
-        res.send(error);
-    }));
+        }).catch((error => {
+            res.send(error);
+        }));
+    }else{
+    res.send(`Contraseña de admin incorrecta`);
+}
 
 };
 
@@ -421,7 +444,7 @@ UsuariosController.traerUsuarioId = (req, res) => {
     });
 };
 
-UsuariosController.traerUsuarioEmail = (req, res) => {
+UsuariosController.traerUsuariosEmail = (req, res) => {
     //Búsqueda comparando un campo
     Usuario.findOne({ where : { email : req.params.email }})
     .then(data => {
@@ -429,7 +452,7 @@ UsuariosController.traerUsuarioEmail = (req, res) => {
     });
 };
 
-UsuariosController.traerUsuarioNickname = (req, res) => {
+UsuariosController.traerUsuariosNickname = (req, res) => {
     //Búsqueda comparando un campo
     Usuario.findOne({ where : { nickname : req.params.nickname }})
     .then(data => {
