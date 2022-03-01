@@ -6,6 +6,7 @@ const isAdmin = require("../middlewares/isAdmin");
 const PagosController = require('../controllers/PagosController');
 
 //CRUD RESTful
+ 
 
 ///////////////Registro PAGO////////////
 //Registro
