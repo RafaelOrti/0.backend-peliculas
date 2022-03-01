@@ -4,6 +4,9 @@ const { Usuario } = require('../models/index');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const { Op } = require("sequelize");
+const transporter = require("../config/nodemailer");
+
+const constHighPassword ="JjFJ%j9$Xdim";
 
 const UsuariosController = {};
 
@@ -16,6 +19,8 @@ const UsuariosController = {};
 //Registro de usuarios
 UsuariosController.registraUsuario = async (req, res) => {
 
+    
+    //te devuelve por lo tanto no hace falta res
     //Registrando un usuario
     console.log("Estamos dentro")
     let nombre = req.body.nombre;
@@ -26,10 +31,16 @@ UsuariosController.registraUsuario = async (req, res) => {
     let password = bcrypt.hashSync(req.body.password, Number.parseInt(authConfig.rounds));
     let numeroCuenta = req.body.numeroCuenta
 
+    if (/^([a-zA-Z0-9@*#]{8,15})$/.test(req.body.password) !== true) {
+        return res.send(
+          "La contraseña debe tener al menos 8 caracteres y no más de 15 caracteres."
+        );
+    };
+
     if(req.body.edad<3){
         res.send("Debes de tener más de 3 años para usar esta aplicación");
     }
-    else{
+ 
     //Comprobación de errores.....
     Usuario.findAll({
         where: {
@@ -73,10 +84,82 @@ UsuariosController.registraUsuario = async (req, res) => {
     });
     //Guardamos en sequelize el usuario
 
-    }
-
 };
 
+// UsuariosController.registra = async (req, res) => {
+//     if (/^([a-zA-Z0-9@*#]{8,15})$/.test(req.body.password) !== true) {
+//       return res.send(
+//         "La contraseña debe tener al menos 8 caracteres y no más de 15 caracteres."
+//       );
+//     }
+//     try {
+//       const hash = bcrypt.hashSync(
+//         req.body.password,
+//         Number.parseInt(authConfig.rounds)
+//       );
+//       const user = await User.create({ ...req.body, password: hash });
+//       res.send(`${user.name}, bienvenid@`);
+//     } catch (error) {
+//       res.status(400).send(error);
+//     }
+//   };
+
+
+
+UsuariosController.registraUsuarioEmail = async (req, res) => {
+    try {
+      if (/^([a-zA-Z0-9@*#]{8,15})$/.test(req.body.password) !== true) {
+        return res.send(
+          "La contraseña debe tener al menos 8 caracteres y no más de 15 caracteres."
+        );
+      }
+      const hash = bcrypt.hashSync(
+        req.body.password,
+        Number.parseInt(authConfig.rounds)
+      );
+      const usuario = await Usuario.create({
+        ...req.body,
+        password: hash,
+        confirmed: 0,
+        rol: 0,
+        
+      });
+      const emailToken = jwt.sign({ email: req.body.email }, authConfig.secret, {
+        expiresIn: authConfig.expires,
+      });
+      const url = "http://localhost:3000/usuarios/confirmar/" + emailToken;
+      await transporter.sendMail({
+        to: req.body.email,
+        subject: "Confirme su registro",
+        html: `<h3>Bienvenido, estás a un paso de registrarte </h3>
+                      <a href="${url}"> Click para confirmar tu registro</a> `,
+      });
+      res.send(
+        `${usuario.nombre}, Te hemos enviado un correo para confirmar el registro, recuerda revisar tu carpeta SPAM si no ves nuestro correo`
+      );
+    } catch (error) {
+      res.status(400).send(error);
+    }
+};
+
+
+UsuariosController.confirmarEmail = async (req, res) => {
+    try {
+      const token = req.params.emailToken;
+      const payload = jwt.verify(token, authConfig.secret);
+      await User.update(
+        { confirmed: true },
+        {
+          where: {
+            email: payload.email,
+          },
+        }
+      );
+      res.status(201).send("Usuario confirmado con exito");
+    } catch (error) {
+      console.error(error);
+    }
+},
 
 
 //Login de un usuario registrado
@@ -123,6 +206,7 @@ UsuariosController.loginUsuarios = (req, res) => {
 ///////////////Registro y login////////////
 
 ///////////////Acciones usuario////////////
+
 ///////////////Actualizar////////////
 
 
@@ -148,6 +232,8 @@ UsuariosController.updateProfileId = async (req, res) => {
     }
 
 }
+
+
 
 
 
@@ -196,7 +282,7 @@ UsuariosController.updatePasswordId = (req, res) => {
                     });
 
             } else {
-                res.status(401).json({ msg: "Usuario o contraseña inválidos" });
+                res.status(401).json({ msg: "contraseña actual inválida" });
             }
 
 
@@ -210,29 +296,27 @@ UsuariosController.updatePasswordId = (req, res) => {
 
 };
 
-
 //Actualizar a admin del usuario por id
-UsuariosController.adminId = (req, res) => {
-
+UsuariosController.idAdmin = (req, res) => {
 
     let id = req.body.id;
-    let password = req.body.password;
+    let highPassword = req.body.highPassword;
     let newRol;
-    if (password==="JjFJ%j9$Xdim"){
+    if (highPassword===`${constHighPassword}`){
 
         Usuario.findOne({
             where: { id: id }
         }).then(usuarioFound => {
 
             if (usuarioFound) {
-
-                if (usuarioFound.rol===0) {
+                console.log("holaaaaaaaaaaaaaaaaaaaaaaa",usuarioFound);
+                if (usuarioFound.rol===false) {
 
                     //En caso de que el rol antiguo SI sea el correcto....
 
                     //1er paso..encriptamos el nuevo password....
 
-                    newRol = 1;
+                    newRol = true;
 
                     ////////////////////////////////7
 
@@ -274,6 +358,67 @@ UsuariosController.adminId = (req, res) => {
 };
 
 
+//Actualizar a auth del usuario por id
+UsuariosController.degradeProfileId = (req, res) => {
+
+    let id = req.body.id;
+    let highPassword = req.body.highPassword;
+    let newRol;
+    if (highPassword===`${constHighPassword}`){
+
+        Usuario.findOne({
+            where: { id: id }
+        }).then(usuarioFound => {
+
+            if (usuarioFound) {
+                
+                if (usuarioFound.rol===true) {
+
+                    //En caso de que el rol antiguo SI sea el correcto....
+
+                    //1er paso..encriptamos el nuevo password....
+
+                    newRol = false;
+
+                    ////////////////////////////////7
+
+                    //2do paso guardamos el nuevo password en la base de datos
+
+                    let data = {
+                        rol: newRol
+                    }
+
+                    console.log("esto es data", data);
+
+                    Usuario.update(data, {
+                        where: { id: id }
+                    })
+                        .then(actualizado => {
+                            res.send(actualizado);
+                        })
+                        .catch((error) => {
+                            res.status(401).json({ msg: `Ha ocurrido un error actualizando el password` });
+                        });
+
+                } else {
+                    res.status(401).json({ msg: "Tu usuario ya es Auth" });
+                }
+
+
+            } else {
+                res.send(`Usuario no encontrado`);
+            }
+
+        }).catch((error => {
+            res.send(error);
+        }));
+    
+    }else{
+        res.send(`Contraseña de admin incorrecta`);
+    }
+
+};
+
 //Actualiza Datos por email
 UsuariosController.updateProfileEmail = async (req, res) => {
 
@@ -295,11 +440,8 @@ UsuariosController.updateProfileEmail = async (req, res) => {
 
 }
 
-
-
-//Actualizar contraseña del usuario por id
+//Actualizar contraseña del usuario por email
 UsuariosController.updatePasswordEmail = (req, res) => {
-
 
     let email = req.body.email;
 
@@ -357,10 +499,10 @@ UsuariosController.updatePasswordEmail = (req, res) => {
 };
 
 //Actualizar a admin del usuario por email
-UsuariosController.adminEmail = (req, res) => {
+UsuariosController.emailAdmin = (req, res) => {
 
 
-    let id = req.params.email;
+    let email = req.body.email;
     let password = req.body.password;
     let newRol;
     if (password==="JjFJ%j9$Xdim"){
@@ -413,6 +555,67 @@ UsuariosController.adminEmail = (req, res) => {
     }else{
     res.send(`Contraseña de admin incorrecta`);
 }
+
+};
+
+//Actualizar a admin del usuario por email
+UsuariosController.degradeProfileEmail = (req, res) => {
+
+    let email = req.body.email;
+    let highPassword = req.body.highPassword;
+    let newRol;
+    if (highPassword===`${constHighPassword}`){
+
+        Usuario.findOne({
+            where: { email: email }
+        }).then(usuarioFound => {
+
+            if (usuarioFound) {
+                
+                if (usuarioFound.rol===true) {
+
+                    //En caso de que el rol antiguo SI sea el correcto....
+
+                    //1er paso..encriptamos el nuevo password....
+
+                    newRol = false;
+
+                    ////////////////////////////////7
+
+                    //2do paso guardamos el nuevo password en la base de datos
+
+                    let data = {
+                        rol: newRol
+                    }
+
+                    console.log("esto es data", data);
+
+                    Usuario.update(data, {
+                        where: { email: email }
+                    })
+                        .then(actualizado => {
+                            res.send(actualizado);
+                        })
+                        .catch((error) => {
+                            res.status(401).json({ msg: `Ha ocurrido un error actualizando el password` });
+                        });
+
+                } else {
+                    res.status(401).json({ msg: "Tu usuario ya es Auth" });
+                }
+
+
+            } else {
+                res.send(`Usuario no encontrado`);
+            }
+
+        }).catch((error => {
+            res.send(error);
+        }));
+    
+    }else{
+        res.send(`Contraseña de admin incorrecta`);
+    }
 
 };
 
@@ -506,8 +709,9 @@ UsuariosController.deleteById = async (req, res) => {
 //Borra Usuarios por email
 UsuariosController.deleteByEmail = async (req, res) => {
 
-    let id = req.params.email
-
+        console.log("holaaaaaaaaaaaaaaaa");
+    let email = req.params.email;
+    console.log("holaaaaaaaaaaaaaaaa");
     try {
 
         Usuario.destroy({
@@ -528,7 +732,7 @@ UsuariosController.deleteByEmail = async (req, res) => {
 //Borra Usuarios por nickname
 UsuariosController.deleteByNickname = async (req, res) => {
 
-    let id = req.params.nickname
+    let nickname = req.params.nickname
 
     try {
 

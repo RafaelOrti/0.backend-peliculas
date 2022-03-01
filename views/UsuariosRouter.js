@@ -12,6 +12,14 @@ const UsuariosController = require('../controllers/UsuariosController');
 router.post('/registro', UsuariosController.registraUsuario);
 //http://localhost:3000/Usuarios/registro
 
+//Registro por email
+router.post('/registro/email',UsuariosController.registraUsuarioEmail);
+//http://localhost:3000/Usuarios/registro/email
+
+//Confirmación registro por email
+router.get('/confirmar/:emailToken',UsuariosController.confirmarEmail);
+//http://localhost:3000/Usuarios/confirmar/:emailToken
+
 //Login
 router.post('/login', UsuariosController.loginUsuarios);
 //http://localhost:3000/Usuarios/login
@@ -22,32 +30,46 @@ router.post('/login', UsuariosController.loginUsuarios);
 ///////////////Actualizar////////////
 
 ////////////////id//////////////
-//Actualizar datos de Usuario por id
-router.put('/actualizar/:id', auth, UsuariosController.updateProfileId);
-//http://localhost:3000/Usuarios/actualizar/:id
+
+
 
 //Actualizar contraseña de Usuario por id
 router.put('/actualizar/newpassword', auth, UsuariosController.updatePasswordId);
 //http://localhost:3000/Usuarios/actualizar/newpassword
 
 //Subir de nivel a superusuario de Usuario por id
-router.put('/actualizar/idAdmin', auth, UsuariosController.adminId);
+router.put('/actualizar/idAdmin', auth, UsuariosController.idAdmin);
 //http://localhost:3000/Usuarios/actualizar/idAdmin
+
+//Convertir en Auth de Usuario por id
+router.put('/actualizar/idAuth', auth, UsuariosController.degradeProfileId);
+//http://localhost:3000/Usuarios/actualizar/email/idAuth
+
+//Actualizar datos de Usuario por id
+router.put('/actualizar/perfilId/:id', auth, UsuariosController.updateProfileId);
+//http://localhost:3000/Usuarios/actualizar/email/:id
 
 ////////////////id//////////////
 ////////////////email//////////////
 
-//Actualizar datos de Usuario por email
-router.put('/actualizar/:email', auth, UsuariosController.updateProfileEmail);
-//http://localhost:3000/Usuarios/actualizar/:email
+
 
 //Actualizar contraseña de Usuario por email
 router.put('/actualizar/newpassword', auth, UsuariosController.updatePasswordEmail);
 //http://localhost:3000/Usuarios/actualizar/newpassword
 
 //Subir de nivel a superusuario de Usuario por email
-router.put('/actualizar/emailAdmin', auth, UsuariosController.adminEmail);
+router.put('/actualizar/emailAdmin', auth, UsuariosController.emailAdmin);
 //http://localhost:3000/Usuarios/actualizar/emailAdmin/:email
+
+//Convertir en Auth de Usuario por email
+router.put('/actualizar/emailAuth', auth, UsuariosController.degradeProfileEmail);
+//http://localhost:3000/Usuarios/actualizar/email/emailAuth
+
+//COnvertir en Admin de Usuario por email
+router.put('/actualizar/perfilEmail/:email', auth, UsuariosController.updateProfileEmail);
+//http://localhost:3000/Usuarios/actualizar/email/:email
+
 
 ////////////////email//////////////
 ///////////////Actualizar////////////

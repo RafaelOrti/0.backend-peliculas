@@ -11,7 +11,7 @@ PedidosController.nuevoPedido = async (req, res) => {
 
     //////////////OPCION INICIAL PARA CREAR PEDIDO /////////////////
     Pedido.create({
-        precio: body.precio,
+        price: body.price,
         peliculaId: body.peliculaId,
         usuarioId: body.usuarioId,
         fechaEntrega: body.fechaEntrega
@@ -25,6 +25,30 @@ PedidosController.nuevoPedido = async (req, res) => {
         res.send(error)
     }))
 }
+
+
+
+//actualizar DB propia
+PedidosController.actualizarPedido = (req, res) => {
+
+    let id = req.params.id
+
+    let datos = req.body;
+    try {
+
+        Pedido.update(datos,{
+            where: { id: id }
+        })
+            .then(pedidoDel => {
+                res.send(`El pedido ${id} ha sido actualizada`)
+            })
+
+    } catch (error) {
+        res.send(error)
+    }
+
+}
+
 
 
 
@@ -49,28 +73,6 @@ PedidosController.todosPedidos = async (req, res) => {
     }
 }
 
-
-
-//Borramos todos los pedidos en DB
-PedidosController.borrarTodos = async (req, res) => {
-
-    let consulta = `DELETE FROM pedidos`;
-
-    try {
-        let resultado = await Pedido.sequelize.query(consulta, {
-            type: Pedido.sequelize.QueryTypes.DELETE
-        });
-
-        if (resultado != 0) {
-            res.send("Pedidos Eliminados con exito!");
-        } else {
-            res.send("Ha ocurrido algun error al borrar los pedidos")
-        }
-
-    } catch (error) {
-        res.send(error)
-    }
-}
 
 
 //Busqueda Avanzada de pedido en DB
@@ -166,13 +168,41 @@ PedidosController.pedidoNombre = async (req, res) => {
 }
 
 
+
+
+
+
+
+//Borramos todos los pedidos en DB
+PedidosController.borrarTodos = async (req, res) => {
+
+    let consulta = `DELETE FROM pedidos`;
+
+    try {
+        let resultado = await Pedido.sequelize.query(consulta, {
+            type: Pedido.sequelize.QueryTypes.DELETE
+        });
+
+        if (resultado != 0) {
+            res.send("Pedidos Eliminados con exito!");
+        } else {
+            res.send("Ha ocurrido algun error al borrar los pedidos")
+        }
+
+    } catch (error) {
+        res.send(error)
+    }
+}
+
+
+
 //Borrar pedidos de Ususarios por Nombre
 PedidosController.borrarNombre = async (req, res) => {
     
     let nombre = req.params.nombre
 
     let consulta = `DELETE FROM pedidos 
-    INNER JOIN usuarios ON usuarios.id = pedidos.usuarioId WHERE (nombre = '${nombre}');`;
+    INNER JOIN usuarios ON usuarios.id = pedidos.usuarioId WHERE (Nombre = '${nombre}');`;
 
     try {
         let resultado = await Pedido.sequelize.query(consulta, {

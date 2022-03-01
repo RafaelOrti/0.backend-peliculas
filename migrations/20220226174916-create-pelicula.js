@@ -23,11 +23,14 @@ module.exports = {
       popularity: {
         type: Sequelize.FLOAT
       },
-      image: {
+      imagen: {
         type: Sequelize.STRING
       },
       fecha: {
         type: Sequelize.DATE
+      },
+      idioma: {
+        type: Sequelize.STRING
       },
       createdAt: {
         allowNull: false,
