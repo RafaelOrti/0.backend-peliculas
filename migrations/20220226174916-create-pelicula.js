@@ -11,6 +11,9 @@ module.exports = {
       titulo: {
         type: Sequelize.STRING
       },
+      genero: {
+        type: Sequelize.STRING
+      },
       sinopsis: {
         type: Sequelize.STRING
       },
@@ -20,11 +23,14 @@ module.exports = {
       popularity: {
         type: Sequelize.FLOAT
       },
-      image: {
+      imagen: {
         type: Sequelize.STRING
       },
       fecha: {
         type: Sequelize.DATE
+      },
+      idioma: {
+        type: Sequelize.STRING
       },
       createdAt: {
         allowNull: false,

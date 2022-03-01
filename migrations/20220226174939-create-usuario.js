@@ -8,33 +8,40 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      name: {
+      nombre: {
         type: Sequelize.STRING,
         //Este valor puede ser nulo
         allowNull: false
       },
-      age: {
-        type: Sequelize.INTEGER
+      apellido: {
+        type: Sequelize.STRING,
+        allowNull: false
       },
-      surname: {
-        type: Sequelize.STRING
+      nickname: {
+        type: Sequelize.STRING,
+        allowNull: false,
+        unique: true
+      },
+      edad: {
+        type: Sequelize.INTEGER
+        ,
+        allowNull: false,
+        defaultValue: 0
       },
       email: {
         type: Sequelize.STRING,
         allowNull: false,
         unique: true
       },
-      password: {
-        type: Sequelize.STRING
-      },
-      nickname: {
-        type: Sequelize.STRING
-      },
       rol: {
         type: Sequelize.BOOLEAN,
         //este método se usa para dar un valor por defecto
-        defaultValue: false,
+        defaultValue: false
       },
+      password: {
+        type: Sequelize.STRING,
+        allowNull: false
+      },  
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

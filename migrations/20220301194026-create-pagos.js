@@ -1,20 +1,20 @@
 'use strict';
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Payments', {
+    await queryInterface.createTable('Pagos', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      card: {
+      tarjeta: {
         type: Sequelize.STRING
       },
       paypal: {
         type: Sequelize.STRING
       },
-      usuarioId: {
+      pagoId: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
@@ -35,6 +35,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Payments');
+    await queryInterface.dropTable('Pagos');
   }
 };

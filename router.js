@@ -1,11 +1,14 @@
 const router = require('express').Router();
 
-const UsuarioRouter = require('./views/UsuarioRouter');
+const UsuariosRouter = require('./views/UsuariosRouter');
 const PeliculasRouter = require('./views/PeliculasRouter');
-const OrdersRouter = require('./views/OrdersRouter');
+const PedidosRouter = require('./views/PedidosRouter');
+const PagosRouter = require('./views/PagosRouter');
 
-router.use('/usuarios', UsuarioRouter);
+router.use('/usuarios', UsuariosRouter);
 router.use('/peliculas', PeliculasRouter);
-router.use('/orders', OrdersRouter);
+router.use('/pedidos', PedidosRouter);
+router.use('/pagos', PagosRouter);
+
 
 module.exports = router;
