@@ -1,0 +1,1648 @@
+{
+	"info": {
+		"_postman_id": "0d095c49-539c-4400-bf71-0a9094527fb4",
+		"name": "API PELICULAS",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "USUARIO",
+			"item": [
+				{
+					"name": "CREATE",
+					"item": [
+						{
+							"name": "Registro",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\t\"nombre\": \"EEEEE\",\r\n    \"apellido\": \"oooo\",\r\n    \"nickname\": \"Psceo\",\r\n    \"edad\": 25,\r\n    \"email\": \"oooooo@gmail.com\",\r\n    \"password\": \"elpecaso\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/Usuarios/registro",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"Usuarios",
+										"registro"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Login",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\t\"email\": \"oooooo@gmail.com\",\r\n\t\"password\": \"elpecaso\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/Usuarios/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"Usuarios",
+										"login"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "UPDATE",
+					"item": [
+						{
+							"name": "ID actualizar usuario",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7ImlkIjozLCJub21icmUiOiJEYXRhVGV5cGVzLlNUUklORyIsImFwZWxsaWRvIjoiUGFjbyIsIm5pY2tuYW1lIjoiUHNjZWFzIiwiZWRhZCI6MjUsImVtYWlsIjoicnBhY28yQGdtYWlsLmNvbSIsInJvbCI6ZmFsc2UsInBhc3N3b3JkIjoiJDJiJDEwJDZMcjlISG1HbXFqQ0xsNE50MzZ4Qk9OVjJlNXhKUGdyNFlVL25MSHBESWtid01iVVhQVVE2IiwibnVtZXJvQ3VlbnRhIjpudWxsLCJjcmVhdGVkQXQiOiIyMDIyLTAyLTI4VDE4OjE2OjU0LjAwMFoiLCJ1cGRhdGVkQXQiOiIyMDIyLTAyLTI4VDE4OjE2OjU0LjAwMFoifSwiaWF0IjoxNjQ2MDcyMzU1LCJleHAiOjE2NDYyNDUxNTV9.X_DfcJrL-msVsZM9Zd_VSIizisVW9ah0CFWR03Zmi-0",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\t\"nombre\": \"Hola\",\r\n    \"apellido\": \"Hola\",\r\n    \"nickname\": \"Hola\",\r\n    \"edad\": 21,\r\n    \"email\": \"rHola@gmail.com\",\r\n    \"password\": \"Hola\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/Usuarios/actualizar/perfilId/2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"Usuarios",
+										"actualizar",
+										"perfilId",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ID actualizar contraseña",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7ImlkIjozLCJub21icmUiOiJEYXRhVGV5cGVzLlNUUklORyIsImFwZWxsaWRvIjoiUGFjbyIsIm5pY2tuYW1lIjoiUHNjZWFzIiwiZWRhZCI6MjUsImVtYWlsIjoicnBhY28yQGdtYWlsLmNvbSIsInJvbCI6ZmFsc2UsInBhc3N3b3JkIjoiJDJiJDEwJDZMcjlISG1HbXFqQ0xsNE50MzZ4Qk9OVjJlNXhKUGdyNFlVL25MSHBESWtid01iVVhQVVE2IiwibnVtZXJvQ3VlbnRhIjpudWxsLCJjcmVhdGVkQXQiOiIyMDIyLTAyLTI4VDE4OjE2OjU0LjAwMFoiLCJ1cGRhdGVkQXQiOiIyMDIyLTAyLTI4VDE4OjE2OjU0LjAwMFoifSwiaWF0IjoxNjQ2MDcyMzU1LCJleHAiOjE2NDYyNDUxNTV9.X_DfcJrL-msVsZM9Zd_VSIizisVW9ah0CFWR03Zmi-0",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\t\"id\": 2,\r\n    \"oldPassword\": \"Hola\",\r\n    \"newPassword\": \"Hola2\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/Usuarios/actualizar/newpassword",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"Usuarios",
+										"actualizar",
+										"newpassword"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ID dar permisos de Admin",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7ImlkIjozLCJub21icmUiOiJEYXRhVGV5cGVzLlNUUklORyIsImFwZWxsaWRvIjoiUGFjbyIsIm5pY2tuYW1lIjoiUHNjZWFzIiwiZWRhZCI6MjUsImVtYWlsIjoicnBhY28yQGdtYWlsLmNvbSIsInJvbCI6ZmFsc2UsInBhc3N3b3JkIjoiJDJiJDEwJDZMcjlISG1HbXFqQ0xsNE50MzZ4Qk9OVjJlNXhKUGdyNFlVL25MSHBESWtid01iVVhQVVE2IiwibnVtZXJvQ3VlbnRhIjpudWxsLCJjcmVhdGVkQXQiOiIyMDIyLTAyLTI4VDE4OjE2OjU0LjAwMFoiLCJ1cGRhdGVkQXQiOiIyMDIyLTAyLTI4VDE4OjE2OjU0LjAwMFoifSwiaWF0IjoxNjQ2MDcyMzU1LCJleHAiOjE2NDYyNDUxNTV9.X_DfcJrL-msVsZM9Zd_VSIizisVW9ah0CFWR03Zmi-0",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "\r\n{\r\n\t\"id\": 1,\r\n    \"highPassword\": \"JjFJ%j9$Xdim\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/Usuarios/actualizar/idAdmin",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"Usuarios",
+										"actualizar",
+										"idAdmin"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ID quitar permisos de Admin",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7ImlkIjozLCJub21icmUiOiJEYXRhVGV5cGVzLlNUUklORyIsImFwZWxsaWRvIjoiUGFjbyIsIm5pY2tuYW1lIjoiUHNjZWFzIiwiZWRhZCI6MjUsImVtYWlsIjoicnBhY28yQGdtYWlsLmNvbSIsInJvbCI6ZmFsc2UsInBhc3N3b3JkIjoiJDJiJDEwJDZMcjlISG1HbXFqQ0xsNE50MzZ4Qk9OVjJlNXhKUGdyNFlVL25MSHBESWtid01iVVhQVVE2IiwibnVtZXJvQ3VlbnRhIjpudWxsLCJjcmVhdGVkQXQiOiIyMDIyLTAyLTI4VDE4OjE2OjU0LjAwMFoiLCJ1cGRhdGVkQXQiOiIyMDIyLTAyLTI4VDE4OjE2OjU0LjAwMFoifSwiaWF0IjoxNjQ2MDcyMzU1LCJleHAiOjE2NDYyNDUxNTV9.X_DfcJrL-msVsZM9Zd_VSIizisVW9ah0CFWR03Zmi-0",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\t\"id\": 2,\r\n    \"highPassword\": \"JjFJ%j9$Xdim\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/Usuarios/actualizar/idAuth",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"Usuarios",
+										"actualizar",
+										"idAuth"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Email actualizar usuario Copy",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7ImlkIjozLCJub21icmUiOiJEYXRhVGV5cGVzLlNUUklORyIsImFwZWxsaWRvIjoiUGFjbyIsIm5pY2tuYW1lIjoiUHNjZWFzIiwiZWRhZCI6MjUsImVtYWlsIjoicnBhY28yQGdtYWlsLmNvbSIsInJvbCI6ZmFsc2UsInBhc3N3b3JkIjoiJDJiJDEwJDZMcjlISG1HbXFqQ0xsNE50MzZ4Qk9OVjJlNXhKUGdyNFlVL25MSHBESWtid01iVVhQVVE2IiwibnVtZXJvQ3VlbnRhIjpudWxsLCJjcmVhdGVkQXQiOiIyMDIyLTAyLTI4VDE4OjE2OjU0LjAwMFoiLCJ1cGRhdGVkQXQiOiIyMDIyLTAyLTI4VDE4OjE2OjU0LjAwMFoifSwiaWF0IjoxNjQ2MDcyMzU1LCJleHAiOjE2NDYyNDUxNTV9.X_DfcJrL-msVsZM9Zd_VSIizisVW9ah0CFWR03Zmi-0",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\t\"nombre\": \"Hola\",\r\n    \"apellido\": \"Hola\",\r\n    \"nickname\": \"Hola\",\r\n    \"edad\": 21,\r\n    \"email\": \"rHola@gmail.com\",\r\n    \"password\": \"Hola\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/Usuarios/actualizar/perfilEmail/@gmail.com",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"Usuarios",
+										"actualizar",
+										"perfilEmail",
+										"@gmail.com"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Email actualizar contraseña Copy",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7ImlkIjozLCJub21icmUiOiJEYXRhVGV5cGVzLlNUUklORyIsImFwZWxsaWRvIjoiUGFjbyIsIm5pY2tuYW1lIjoiUHNjZWFzIiwiZWRhZCI6MjUsImVtYWlsIjoicnBhY28yQGdtYWlsLmNvbSIsInJvbCI6ZmFsc2UsInBhc3N3b3JkIjoiJDJiJDEwJDZMcjlISG1HbXFqQ0xsNE50MzZ4Qk9OVjJlNXhKUGdyNFlVL25MSHBESWtid01iVVhQVVE2IiwibnVtZXJvQ3VlbnRhIjpudWxsLCJjcmVhdGVkQXQiOiIyMDIyLTAyLTI4VDE4OjE2OjU0LjAwMFoiLCJ1cGRhdGVkQXQiOiIyMDIyLTAyLTI4VDE4OjE2OjU0LjAwMFoifSwiaWF0IjoxNjQ2MDcyMzU1LCJleHAiOjE2NDYyNDUxNTV9.X_DfcJrL-msVsZM9Zd_VSIizisVW9ah0CFWR03Zmi-0",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\t\"email\": 2,\r\n    \"oldPassword\": \"Hola\",\r\n    \"newPassword\": \"Hola2\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/Usuarios/actualizar/newpassword",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"Usuarios",
+										"actualizar",
+										"newpassword"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Email dar permisos de Admin Copy",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7ImlkIjozLCJub21icmUiOiJEYXRhVGV5cGVzLlNUUklORyIsImFwZWxsaWRvIjoiUGFjbyIsIm5pY2tuYW1lIjoiUHNjZWFzIiwiZWRhZCI6MjUsImVtYWlsIjoicnBhY28yQGdtYWlsLmNvbSIsInJvbCI6ZmFsc2UsInBhc3N3b3JkIjoiJDJiJDEwJDZMcjlISG1HbXFqQ0xsNE50MzZ4Qk9OVjJlNXhKUGdyNFlVL25MSHBESWtid01iVVhQVVE2IiwibnVtZXJvQ3VlbnRhIjpudWxsLCJjcmVhdGVkQXQiOiIyMDIyLTAyLTI4VDE4OjE2OjU0LjAwMFoiLCJ1cGRhdGVkQXQiOiIyMDIyLTAyLTI4VDE4OjE2OjU0LjAwMFoifSwiaWF0IjoxNjQ2MDcyMzU1LCJleHAiOjE2NDYyNDUxNTV9.X_DfcJrL-msVsZM9Zd_VSIizisVW9ah0CFWR03Zmi-0",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "\r\n{\r\n\t\"id\": 2,\r\n    \"highPassword\": \"JjFJ%j9$Xdim\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/Usuarios/actualizar/emailAdmin",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"Usuarios",
+										"actualizar",
+										"emailAdmin"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Email quitar permisos de Admin Copy",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7ImlkIjozLCJub21icmUiOiJEYXRhVGV5cGVzLlNUUklORyIsImFwZWxsaWRvIjoiUGFjbyIsIm5pY2tuYW1lIjoiUHNjZWFzIiwiZWRhZCI6MjUsImVtYWlsIjoicnBhY28yQGdtYWlsLmNvbSIsInJvbCI6ZmFsc2UsInBhc3N3b3JkIjoiJDJiJDEwJDZMcjlISG1HbXFqQ0xsNE50MzZ4Qk9OVjJlNXhKUGdyNFlVL25MSHBESWtid01iVVhQVVE2IiwibnVtZXJvQ3VlbnRhIjpudWxsLCJjcmVhdGVkQXQiOiIyMDIyLTAyLTI4VDE4OjE2OjU0LjAwMFoiLCJ1cGRhdGVkQXQiOiIyMDIyLTAyLTI4VDE4OjE2OjU0LjAwMFoifSwiaWF0IjoxNjQ2MDcyMzU1LCJleHAiOjE2NDYyNDUxNTV9.X_DfcJrL-msVsZM9Zd_VSIizisVW9ah0CFWR03Zmi-0",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\t\"email\": 2,\r\n    \"highPassword\": \"JjFJ%j9$Xdim\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/Usuarios/actualizar/emailAuth",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"Usuarios",
+										"actualizar",
+										"emailAuth"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "READ",
+					"item": [
+						{
+							"name": "Leer todos los usuarios",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7ImlkIjo0LCJub21icmUiOiJFRUVFRSIsImFwZWxsaWRvIjoib29vbyIsIm5pY2tuYW1lIjoiUHNjZW8iLCJlZGFkIjoyNSwiZW1haWwiOiJvb29vb29AZ21haWwuY29tIiwicm9sIjp0cnVlLCJwYXNzd29yZCI6IiQyYiQxMCRkaTBUbjB0VWxYUFdWRzdEbHdKNVNlUUpvMG1YajFSOWsvMXhrVC45TC5KREVZMHZaNDJIeSIsIm51bWVyb0N1ZW50YSI6bnVsbCwiY3JlYXRlZEF0IjoiMjAyMi0wMi0yOFQxOTo1ODo1Mi4wMDBaIiwidXBkYXRlZEF0IjoiMjAyMi0wMi0yOFQxOTo1OTowNi4wMDBaIn0sImlhdCI6MTY0NjA3ODM3MSwiZXhwIjoxNjQ2MjUxMTcxfQ.Dy-BwNcgQCv6Xmt7LD2bw6rp6a01GCvGUGHX6R0oVfI",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/Usuarios/leer",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"Usuarios",
+										"leer"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Leer usuario por ID",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7ImlkIjo0LCJub21icmUiOiJFRUVFRSIsImFwZWxsaWRvIjoib29vbyIsIm5pY2tuYW1lIjoiUHNjZW8iLCJlZGFkIjoyNSwiZW1haWwiOiJvb29vb29AZ21haWwuY29tIiwicm9sIjp0cnVlLCJwYXNzd29yZCI6IiQyYiQxMCRkaTBUbjB0VWxYUFdWRzdEbHdKNVNlUUpvMG1YajFSOWsvMXhrVC45TC5KREVZMHZaNDJIeSIsIm51bWVyb0N1ZW50YSI6bnVsbCwiY3JlYXRlZEF0IjoiMjAyMi0wMi0yOFQxOTo1ODo1Mi4wMDBaIiwidXBkYXRlZEF0IjoiMjAyMi0wMi0yOFQxOTo1OTowNi4wMDBaIn0sImlhdCI6MTY0NjA3ODM3MSwiZXhwIjoxNjQ2MjUxMTcxfQ.Dy-BwNcgQCv6Xmt7LD2bw6rp6a01GCvGUGHX6R0oVfI",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/Usuarios/leer/id/2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"Usuarios",
+										"leer",
+										"id",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Leer usuario por email",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7ImlkIjo0LCJub21icmUiOiJFRUVFRSIsImFwZWxsaWRvIjoib29vbyIsIm5pY2tuYW1lIjoiUHNjZW8iLCJlZGFkIjoyNSwiZW1haWwiOiJvb29vb29AZ21haWwuY29tIiwicm9sIjp0cnVlLCJwYXNzd29yZCI6IiQyYiQxMCRkaTBUbjB0VWxYUFdWRzdEbHdKNVNlUUpvMG1YajFSOWsvMXhrVC45TC5KREVZMHZaNDJIeSIsIm51bWVyb0N1ZW50YSI6bnVsbCwiY3JlYXRlZEF0IjoiMjAyMi0wMi0yOFQxOTo1ODo1Mi4wMDBaIiwidXBkYXRlZEF0IjoiMjAyMi0wMi0yOFQxOTo1OTowNi4wMDBaIn0sImlhdCI6MTY0NjA3ODM3MSwiZXhwIjoxNjQ2MjUxMTcxfQ.Dy-BwNcgQCv6Xmt7LD2bw6rp6a01GCvGUGHX6R0oVfI",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/Usuarios/leer/email/oooooo@gmail.com",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"Usuarios",
+										"leer",
+										"email",
+										"oooooo@gmail.com"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Leer usuario por nickname",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7ImlkIjo0LCJub21icmUiOiJFRUVFRSIsImFwZWxsaWRvIjoib29vbyIsIm5pY2tuYW1lIjoiUHNjZW8iLCJlZGFkIjoyNSwiZW1haWwiOiJvb29vb29AZ21haWwuY29tIiwicm9sIjp0cnVlLCJwYXNzd29yZCI6IiQyYiQxMCRkaTBUbjB0VWxYUFdWRzdEbHdKNVNlUUpvMG1YajFSOWsvMXhrVC45TC5KREVZMHZaNDJIeSIsIm51bWVyb0N1ZW50YSI6bnVsbCwiY3JlYXRlZEF0IjoiMjAyMi0wMi0yOFQxOTo1ODo1Mi4wMDBaIiwidXBkYXRlZEF0IjoiMjAyMi0wMi0yOFQxOTo1OTowNi4wMDBaIn0sImlhdCI6MTY0NjA3ODM3MSwiZXhwIjoxNjQ2MjUxMTcxfQ.Dy-BwNcgQCv6Xmt7LD2bw6rp6a01GCvGUGHX6R0oVfI",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/Usuarios/leer/nickname/Psceas",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"Usuarios",
+										"leer",
+										"nickname",
+										"Psceas"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "DELETE",
+					"item": [
+						{
+							"name": "Borrar todos los usuarios",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7ImlkIjo0LCJub21icmUiOiJFRUVFRSIsImFwZWxsaWRvIjoib29vbyIsIm5pY2tuYW1lIjoiUHNjZW8iLCJlZGFkIjoyNSwiZW1haWwiOiJvb29vb29AZ21haWwuY29tIiwicm9sIjp0cnVlLCJwYXNzd29yZCI6IiQyYiQxMCRkaTBUbjB0VWxYUFdWRzdEbHdKNVNlUUpvMG1YajFSOWsvMXhrVC45TC5KREVZMHZaNDJIeSIsIm51bWVyb0N1ZW50YSI6bnVsbCwiY3JlYXRlZEF0IjoiMjAyMi0wMi0yOFQxOTo1ODo1Mi4wMDBaIiwidXBkYXRlZEF0IjoiMjAyMi0wMi0yOFQxOTo1OTowNi4wMDBaIn0sImlhdCI6MTY0NjA3ODM3MSwiZXhwIjoxNjQ2MjUxMTcxfQ.Dy-BwNcgQCv6Xmt7LD2bw6rp6a01GCvGUGHX6R0oVfI",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/Usuarios/borrar",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"Usuarios",
+										"borrar"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Borrar usuario por ID",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7ImlkIjo0LCJub21icmUiOiJFRUVFRSIsImFwZWxsaWRvIjoib29vbyIsIm5pY2tuYW1lIjoiUHNjZW8iLCJlZGFkIjoyNSwiZW1haWwiOiJvb29vb29AZ21haWwuY29tIiwicm9sIjp0cnVlLCJwYXNzd29yZCI6IiQyYiQxMCRkaTBUbjB0VWxYUFdWRzdEbHdKNVNlUUpvMG1YajFSOWsvMXhrVC45TC5KREVZMHZaNDJIeSIsIm51bWVyb0N1ZW50YSI6bnVsbCwiY3JlYXRlZEF0IjoiMjAyMi0wMi0yOFQxOTo1ODo1Mi4wMDBaIiwidXBkYXRlZEF0IjoiMjAyMi0wMi0yOFQxOTo1OTowNi4wMDBaIn0sImlhdCI6MTY0NjA3ODM3MSwiZXhwIjoxNjQ2MjUxMTcxfQ.Dy-BwNcgQCv6Xmt7LD2bw6rp6a01GCvGUGHX6R0oVfI",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/Usuarios/borrar/id/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"Usuarios",
+										"borrar",
+										"id",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Borrar usuario por email",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7ImlkIjo0LCJub21icmUiOiJFRUVFRSIsImFwZWxsaWRvIjoib29vbyIsIm5pY2tuYW1lIjoiUHNjZW8iLCJlZGFkIjoyNSwiZW1haWwiOiJvb29vb29AZ21haWwuY29tIiwicm9sIjp0cnVlLCJwYXNzd29yZCI6IiQyYiQxMCRkaTBUbjB0VWxYUFdWRzdEbHdKNVNlUUpvMG1YajFSOWsvMXhrVC45TC5KREVZMHZaNDJIeSIsIm51bWVyb0N1ZW50YSI6bnVsbCwiY3JlYXRlZEF0IjoiMjAyMi0wMi0yOFQxOTo1ODo1Mi4wMDBaIiwidXBkYXRlZEF0IjoiMjAyMi0wMi0yOFQxOTo1OTowNi4wMDBaIn0sImlhdCI6MTY0NjA3ODM3MSwiZXhwIjoxNjQ2MjUxMTcxfQ.Dy-BwNcgQCv6Xmt7LD2bw6rp6a01GCvGUGHX6R0oVfI",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/Usuarios/borrar/email/rpaco2@gmail.com",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"Usuarios",
+										"borrar",
+										"email",
+										"rpaco2@gmail.com"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Borrar usuario por nickname",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7ImlkIjo0LCJub21icmUiOiJFRUVFRSIsImFwZWxsaWRvIjoib29vbyIsIm5pY2tuYW1lIjoiUHNjZW8iLCJlZGFkIjoyNSwiZW1haWwiOiJvb29vb29AZ21haWwuY29tIiwicm9sIjp0cnVlLCJwYXNzd29yZCI6IiQyYiQxMCRkaTBUbjB0VWxYUFdWRzdEbHdKNVNlUUpvMG1YajFSOWsvMXhrVC45TC5KREVZMHZaNDJIeSIsIm51bWVyb0N1ZW50YSI6bnVsbCwiY3JlYXRlZEF0IjoiMjAyMi0wMi0yOFQxOTo1ODo1Mi4wMDBaIiwidXBkYXRlZEF0IjoiMjAyMi0wMi0yOFQxOTo1OTowNi4wMDBaIn0sImlhdCI6MTY0NjA3ODM3MSwiZXhwIjoxNjQ2MjUxMTcxfQ.Dy-BwNcgQCv6Xmt7LD2bw6rp6a01GCvGUGHX6R0oVfI",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/Usuarios/borrar/nickname/Hola",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"Usuarios",
+										"borrar",
+										"nickname",
+										"Hola"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "PELICULAS",
+			"item": [
+				{
+					"name": "CREATE",
+					"item": [
+						{
+							"name": "Crear pelicula",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\t\"titulo\": \"EEEEE\",\r\n    \"genero\": \"oooo\",\r\n    \"sinopsis\": \"Psceo\",\r\n    \"adult\": false,\r\n    \"popularity\": 4,\r\n    \"imagen\": \"Psceo\",\r\n    \"fecha\": \"2022-03-01 17:44:26\",\r\n    \"idioma\": \"elpecaso\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/Peliculas/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"Peliculas",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Clonar",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/peliculas/clonar",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"peliculas",
+										"clonar"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "UPDATE",
+					"item": [
+						{
+							"name": "actualizar pelicula",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7ImlkIjoxLCJub21icmUiOiJFRUVFRSIsImFwZWxsaWRvIjoib29vbyIsIm5pY2tuYW1lIjoiUHNjZW8iLCJlZGFkIjoyNSwiZW1haWwiOiJvb29vb29AZ21haWwuY29tIiwicm9sIjp0cnVlLCJwYXNzd29yZCI6IiQyYiQxMCRoTXVkME1JL3FNUC8wbUJLeGtrSVcuT3l3dTlNT05iL25ReWZaaEpZcnJxbE5uOHZxS2t1eSIsIm51bWVyb0N1ZW50YSI6Im5vIGluZGljYWRvIiwiY3JlYXRlZEF0IjoiMjAyMi0wMy0wMVQxNzo0NDoyNi4wMDBaIiwidXBkYXRlZEF0IjoiMjAyMi0wMy0wMVQxNzo0NDoyOS4wMDBaIn0sImlhdCI6MTY0NjE1NjY3MCwiZXhwIjoxNjQ2MzI5NDcwfQ.6p-pMw6oP2UvosEmOBRWcdB6Ur01swQreN6CRtNW7fY",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": 924,\r\n\t\"titulo\": \"EEEEE\",\r\n    \"genero\": \"oooo\",\r\n    \"sinopsis\": \"Psceo\",\r\n    \"adult\": false,\r\n    \"popularity\": 4,\r\n    \"imagen\": \"Psceo\",\r\n    \"fecha\": \"2022-03-01 17:44:26\",\r\n    \"idioma\": \"elpecaso\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/peliculas/924",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"peliculas",
+										"924"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "READ",
+					"item": [
+						{
+							"name": "leer peliculas",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7ImlkIjoxLCJub21icmUiOiJFRUVFRSIsImFwZWxsaWRvIjoib29vbyIsIm5pY2tuYW1lIjoiUHNjZW8iLCJlZGFkIjoyNSwiZW1haWwiOiJvb29vb29AZ21haWwuY29tIiwicm9sIjp0cnVlLCJwYXNzd29yZCI6IiQyYiQxMCRoTXVkME1JL3FNUC8wbUJLeGtrSVcuT3l3dTlNT05iL25ReWZaaEpZcnJxbE5uOHZxS2t1eSIsIm51bWVyb0N1ZW50YSI6Im5vIGluZGljYWRvIiwiY3JlYXRlZEF0IjoiMjAyMi0wMy0wMVQxNzo0NDoyNi4wMDBaIiwidXBkYXRlZEF0IjoiMjAyMi0wMy0wMVQxNzo0NDoyOS4wMDBaIn0sImlhdCI6MTY0NjE1NjY3MCwiZXhwIjoxNjQ2MzI5NDcwfQ.6p-pMw6oP2UvosEmOBRWcdB6Ur01swQreN6CRtNW7fY",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/peliculas/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"peliculas",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "leer pelicula por genero",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7ImlkIjoxLCJub21icmUiOiJFRUVFRSIsImFwZWxsaWRvIjoib29vbyIsIm5pY2tuYW1lIjoiUHNjZW8iLCJlZGFkIjoyNSwiZW1haWwiOiJvb29vb29AZ21haWwuY29tIiwicm9sIjp0cnVlLCJwYXNzd29yZCI6IiQyYiQxMCRoTXVkME1JL3FNUC8wbUJLeGtrSVcuT3l3dTlNT05iL25ReWZaaEpZcnJxbE5uOHZxS2t1eSIsIm51bWVyb0N1ZW50YSI6Im5vIGluZGljYWRvIiwiY3JlYXRlZEF0IjoiMjAyMi0wMy0wMVQxNzo0NDoyNi4wMDBaIiwidXBkYXRlZEF0IjoiMjAyMi0wMy0wMVQxNzo0NDoyOS4wMDBaIn0sImlhdCI6MTY0NjE1NjY3MCwiZXhwIjoxNjQ2MzI5NDcwfQ.6p-pMw6oP2UvosEmOBRWcdB6Ur01swQreN6CRtNW7fY",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\r\n    \"genero\": 55\r\n\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/peliculas/genero",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"peliculas",
+										"genero"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "leer pelicula por genero y titulo",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7ImlkIjoxLCJub21icmUiOiJFRUVFRSIsImFwZWxsaWRvIjoib29vbyIsIm5pY2tuYW1lIjoiUHNjZW8iLCJlZGFkIjoyNSwiZW1haWwiOiJvb29vb29AZ21haWwuY29tIiwicm9sIjp0cnVlLCJwYXNzd29yZCI6IiQyYiQxMCRoTXVkME1JL3FNUC8wbUJLeGtrSVcuT3l3dTlNT05iL25ReWZaaEpZcnJxbE5uOHZxS2t1eSIsIm51bWVyb0N1ZW50YSI6Im5vIGluZGljYWRvIiwiY3JlYXRlZEF0IjoiMjAyMi0wMy0wMVQxNzo0NDoyNi4wMDBaIiwidXBkYXRlZEF0IjoiMjAyMi0wMy0wMVQxNzo0NDoyOS4wMDBaIn0sImlhdCI6MTY0NjE1NjY3MCwiZXhwIjoxNjQ2MzI5NDcwfQ.6p-pMw6oP2UvosEmOBRWcdB6Ur01swQreN6CRtNW7fY",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\r\n    \"genero\": 55,\r\n\t\"titulo\": \"EEEEE\"\r\n\r\n}\r\n\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/peliculas/genero/titulo",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"peliculas",
+										"genero",
+										"titulo"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "leer pelicula por adultos",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7ImlkIjoxLCJub21icmUiOiJFRUVFRSIsImFwZWxsaWRvIjoib29vbyIsIm5pY2tuYW1lIjoiUHNjZW8iLCJlZGFkIjoyNSwiZW1haWwiOiJvb29vb29AZ21haWwuY29tIiwicm9sIjp0cnVlLCJwYXNzd29yZCI6IiQyYiQxMCRoTXVkME1JL3FNUC8wbUJLeGtrSVcuT3l3dTlNT05iL25ReWZaaEpZcnJxbE5uOHZxS2t1eSIsIm51bWVyb0N1ZW50YSI6Im5vIGluZGljYWRvIiwiY3JlYXRlZEF0IjoiMjAyMi0wMy0wMVQxNzo0NDoyNi4wMDBaIiwidXBkYXRlZEF0IjoiMjAyMi0wMy0wMVQxNzo0NDoyOS4wMDBaIn0sImlhdCI6MTY0NjE1NjY3MCwiZXhwIjoxNjQ2MzI5NDcwfQ.6p-pMw6oP2UvosEmOBRWcdB6Ur01swQreN6CRtNW7fY",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/peliculas/adultos",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"peliculas",
+										"adultos"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "leer pelicula por adultos y titulo por variar",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7ImlkIjoxLCJub21icmUiOiJFRUVFRSIsImFwZWxsaWRvIjoib29vbyIsIm5pY2tuYW1lIjoiUHNjZW8iLCJlZGFkIjoyNSwiZW1haWwiOiJvb29vb29AZ21haWwuY29tIiwicm9sIjp0cnVlLCJwYXNzd29yZCI6IiQyYiQxMCRoTXVkME1JL3FNUC8wbUJLeGtrSVcuT3l3dTlNT05iL25ReWZaaEpZcnJxbE5uOHZxS2t1eSIsIm51bWVyb0N1ZW50YSI6Im5vIGluZGljYWRvIiwiY3JlYXRlZEF0IjoiMjAyMi0wMy0wMVQxNzo0NDoyNi4wMDBaIiwidXBkYXRlZEF0IjoiMjAyMi0wMy0wMVQxNzo0NDoyOS4wMDBaIn0sImlhdCI6MTY0NjE1NjY3MCwiZXhwIjoxNjQ2MzI5NDcwfQ.6p-pMw6oP2UvosEmOBRWcdB6Ur01swQreN6CRtNW7fY",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/peliculas/adultos/titulo?titulo=The House&adult=0",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"peliculas",
+										"adultos",
+										"titulo"
+									],
+									"query": [
+										{
+											"key": "titulo",
+											"value": "The House"
+										},
+										{
+											"key": "adult",
+											"value": "0"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "leer pelicula según popularidad con query por variar",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7ImlkIjoxLCJub21icmUiOiJFRUVFRSIsImFwZWxsaWRvIjoib29vbyIsIm5pY2tuYW1lIjoiUHNjZW8iLCJlZGFkIjoyNSwiZW1haWwiOiJvb29vb29AZ21haWwuY29tIiwicm9sIjp0cnVlLCJwYXNzd29yZCI6IiQyYiQxMCRoTXVkME1JL3FNUC8wbUJLeGtrSVcuT3l3dTlNT05iL25ReWZaaEpZcnJxbE5uOHZxS2t1eSIsIm51bWVyb0N1ZW50YSI6Im5vIGluZGljYWRvIiwiY3JlYXRlZEF0IjoiMjAyMi0wMy0wMVQxNzo0NDoyNi4wMDBaIiwidXBkYXRlZEF0IjoiMjAyMi0wMy0wMVQxNzo0NDoyOS4wMDBaIn0sImlhdCI6MTY0NjE1NjY3MCwiZXhwIjoxNjQ2MzI5NDcwfQ.6p-pMw6oP2UvosEmOBRWcdB6Ur01swQreN6CRtNW7fY",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/peliculas/favoritas?popularity=721.84",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"peliculas",
+										"favoritas"
+									],
+									"query": [
+										{
+											"key": "popularity",
+											"value": "721.84"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "DELETE",
+					"item": [
+						{
+							"name": "borrar pelicula por id",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7ImlkIjoxLCJub21icmUiOiJFRUVFRSIsImFwZWxsaWRvIjoib29vbyIsIm5pY2tuYW1lIjoiUHNjZW8iLCJlZGFkIjoyNSwiZW1haWwiOiJvb29vb29AZ21haWwuY29tIiwicm9sIjp0cnVlLCJwYXNzd29yZCI6IiQyYiQxMCRoTXVkME1JL3FNUC8wbUJLeGtrSVcuT3l3dTlNT05iL25ReWZaaEpZcnJxbE5uOHZxS2t1eSIsIm51bWVyb0N1ZW50YSI6Im5vIGluZGljYWRvIiwiY3JlYXRlZEF0IjoiMjAyMi0wMy0wMVQxNzo0NDoyNi4wMDBaIiwidXBkYXRlZEF0IjoiMjAyMi0wMy0wMVQxNzo0NDoyOS4wMDBaIn0sImlhdCI6MTY0NjE1NjY3MCwiZXhwIjoxNjQ2MzI5NDcwfQ.6p-pMw6oP2UvosEmOBRWcdB6Ur01swQreN6CRtNW7fY",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": " {\r\n        \"id\": 939\r\n }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/peliculas/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"peliculas",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "borrar todas las peliculas",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7ImlkIjoxLCJub21icmUiOiJFRUVFRSIsImFwZWxsaWRvIjoib29vbyIsIm5pY2tuYW1lIjoiUHNjZW8iLCJlZGFkIjoyNSwiZW1haWwiOiJvb29vb29AZ21haWwuY29tIiwicm9sIjp0cnVlLCJwYXNzd29yZCI6IiQyYiQxMCRoTXVkME1JL3FNUC8wbUJLeGtrSVcuT3l3dTlNT05iL25ReWZaaEpZcnJxbE5uOHZxS2t1eSIsIm51bWVyb0N1ZW50YSI6Im5vIGluZGljYWRvIiwiY3JlYXRlZEF0IjoiMjAyMi0wMy0wMVQxNzo0NDoyNi4wMDBaIiwidXBkYXRlZEF0IjoiMjAyMi0wMy0wMVQxNzo0NDoyOS4wMDBaIn0sImlhdCI6MTY0NjE1NjY3MCwiZXhwIjoxNjQ2MzI5NDcwfQ.6p-pMw6oP2UvosEmOBRWcdB6Ur01swQreN6CRtNW7fY",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/peliculas/todas",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"peliculas",
+										"todas"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "PEDIDOS",
+			"item": [
+				{
+					"name": "CREATE",
+					"item": [
+						{
+							"name": "crear pedido",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7ImlkIjoyLCJub21icmUiOiJwZXIwIiwiYXBlbGxpZG8iOiJvb29vIiwibmlja25hbWUiOiJQbyIsImVkYWQiOjI1LCJlbWFpbCI6InBvQGdtYWlsLmNvbSIsInJvbCI6ZmFsc2UsInBhc3N3b3JkIjoiJDJiJDEwJGVMckgyV2xOcFU0dE1MSVZuM1ZMb2Uuck1tQUpOQk9VcVp3MTVKbnExUThCcFhkQlBOTVF1IiwibnVtZXJvQ3VlbnRhIjoibm8gaW5kaWNhZG8iLCJjcmVhdGVkQXQiOiIyMDIyLTAzLTAxVDE5OjA5OjE2LjAwMFoiLCJ1cGRhdGVkQXQiOiIyMDIyLTAzLTAxVDE5OjA5OjE2LjAwMFoifSwiaWF0IjoxNjQ2MTYxODQyLCJleHAiOjE2NDYzMzQ2NDJ9.w4CVQMCL_-eWNoK6dbIquzqpfb416AaCOyPajFEVbts",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\t\"price\": 3445454,\r\n    \"peliculaId\":4,\r\n    \"usuarioId\": 3,\r\n    \"fechaEntrega\": \"2022-03-01 17:44:26\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/pedidos",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"pedidos"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "UPDATE",
+					"item": [
+						{
+							"name": "editar pedido",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7ImlkIjoxLCJub21icmUiOiJFRUVFRSIsImFwZWxsaWRvIjoib29vbyIsIm5pY2tuYW1lIjoiUHNjZW8iLCJlZGFkIjoyNSwiZW1haWwiOiJvb29vb29AZ21haWwuY29tIiwicm9sIjp0cnVlLCJwYXNzd29yZCI6IiQyYiQxMCRoTXVkME1JL3FNUC8wbUJLeGtrSVcuT3l3dTlNT05iL25ReWZaaEpZcnJxbE5uOHZxS2t1eSIsIm51bWVyb0N1ZW50YSI6Im5vIGluZGljYWRvIiwiY3JlYXRlZEF0IjoiMjAyMi0wMy0wMVQxNzo0NDoyNi4wMDBaIiwidXBkYXRlZEF0IjoiMjAyMi0wMy0wMVQxNzo0NDoyOS4wMDBaIn0sImlhdCI6MTY0NjE1NjY3MCwiZXhwIjoxNjQ2MzI5NDcwfQ.6p-pMw6oP2UvosEmOBRWcdB6Ur01swQreN6CRtNW7fY",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\t\"price\": 14,\r\n    \"fechaEntrega\": \"2022-03-01 17:44:26\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/pedidos/3",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"pedidos",
+										"3"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "READ",
+					"item": [
+						{
+							"name": "leer todos los pedidos",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7ImlkIjoxLCJub21icmUiOiJFRUVFRSIsImFwZWxsaWRvIjoib29vbyIsIm5pY2tuYW1lIjoiUHNjZW8iLCJlZGFkIjoyNSwiZW1haWwiOiJvb29vb29AZ21haWwuY29tIiwicm9sIjp0cnVlLCJwYXNzd29yZCI6IiQyYiQxMCRoTXVkME1JL3FNUC8wbUJLeGtrSVcuT3l3dTlNT05iL25ReWZaaEpZcnJxbE5uOHZxS2t1eSIsIm51bWVyb0N1ZW50YSI6Im5vIGluZGljYWRvIiwiY3JlYXRlZEF0IjoiMjAyMi0wMy0wMVQxNzo0NDoyNi4wMDBaIiwidXBkYXRlZEF0IjoiMjAyMi0wMy0wMVQxNzo0NDoyOS4wMDBaIn0sImlhdCI6MTY0NjE1NjY3MCwiZXhwIjoxNjQ2MzI5NDcwfQ.6p-pMw6oP2UvosEmOBRWcdB6Ur01swQreN6CRtNW7fY",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/pedidos",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"pedidos"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "leer de forma avanzada titulo de cada pedido",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7ImlkIjoxLCJub21icmUiOiJFRUVFRSIsImFwZWxsaWRvIjoib29vbyIsIm5pY2tuYW1lIjoiUHNjZW8iLCJlZGFkIjoyNSwiZW1haWwiOiJvb29vb29AZ21haWwuY29tIiwicm9sIjp0cnVlLCJwYXNzd29yZCI6IiQyYiQxMCRoTXVkME1JL3FNUC8wbUJLeGtrSVcuT3l3dTlNT05iL25ReWZaaEpZcnJxbE5uOHZxS2t1eSIsIm51bWVyb0N1ZW50YSI6Im5vIGluZGljYWRvIiwiY3JlYXRlZEF0IjoiMjAyMi0wMy0wMVQxNzo0NDoyNi4wMDBaIiwidXBkYXRlZEF0IjoiMjAyMi0wMy0wMVQxNzo0NDoyOS4wMDBaIn0sImlhdCI6MTY0NjE1NjY3MCwiZXhwIjoxNjQ2MzI5NDcwfQ.6p-pMw6oP2UvosEmOBRWcdB6Ur01swQreN6CRtNW7fY",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/pedidos/avanzado",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"pedidos",
+										"avanzado"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "leer avanzado con info de usuarios y peliculas",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7ImlkIjoxLCJub21icmUiOiJFRUVFRSIsImFwZWxsaWRvIjoib29vbyIsIm5pY2tuYW1lIjoiUHNjZW8iLCJlZGFkIjoyNSwiZW1haWwiOiJvb29vb29AZ21haWwuY29tIiwicm9sIjp0cnVlLCJwYXNzd29yZCI6IiQyYiQxMCRoTXVkME1JL3FNUC8wbUJLeGtrSVcuT3l3dTlNT05iL25ReWZaaEpZcnJxbE5uOHZxS2t1eSIsIm51bWVyb0N1ZW50YSI6Im5vIGluZGljYWRvIiwiY3JlYXRlZEF0IjoiMjAyMi0wMy0wMVQxNzo0NDoyNi4wMDBaIiwidXBkYXRlZEF0IjoiMjAyMi0wMy0wMVQxNzo0NDoyOS4wMDBaIn0sImlhdCI6MTY0NjE1NjY3MCwiZXhwIjoxNjQ2MzI5NDcwfQ.6p-pMw6oP2UvosEmOBRWcdB6Ur01swQreN6CRtNW7fY",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/pedidos/avanzado/usuarios",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"pedidos",
+										"avanzado",
+										"usuarios"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "leer avanzado con info de usuarios y peliculas por nombre",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7ImlkIjoxLCJub21icmUiOiJFRUVFRSIsImFwZWxsaWRvIjoib29vbyIsIm5pY2tuYW1lIjoiUHNjZW8iLCJlZGFkIjoyNSwiZW1haWwiOiJvb29vb29AZ21haWwuY29tIiwicm9sIjp0cnVlLCJwYXNzd29yZCI6IiQyYiQxMCRoTXVkME1JL3FNUC8wbUJLeGtrSVcuT3l3dTlNT05iL25ReWZaaEpZcnJxbE5uOHZxS2t1eSIsIm51bWVyb0N1ZW50YSI6Im5vIGluZGljYWRvIiwiY3JlYXRlZEF0IjoiMjAyMi0wMy0wMVQxNzo0NDoyNi4wMDBaIiwidXBkYXRlZEF0IjoiMjAyMi0wMy0wMVQxNzo0NDoyOS4wMDBaIn0sImlhdCI6MTY0NjE1NjY3MCwiZXhwIjoxNjQ2MzI5NDcwfQ.6p-pMw6oP2UvosEmOBRWcdB6Ur01swQreN6CRtNW7fY",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/pedidos/avanzado/usuarios/EEEEE",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"pedidos",
+										"avanzado",
+										"usuarios",
+										"EEEEE"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "DELETE",
+					"item": [
+						{
+							"name": "borrar todos los pedidos",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7ImlkIjoxLCJub21icmUiOiJFRUVFRSIsImFwZWxsaWRvIjoib29vbyIsIm5pY2tuYW1lIjoiUHNjZW8iLCJlZGFkIjoyNSwiZW1haWwiOiJvb29vb29AZ21haWwuY29tIiwicm9sIjp0cnVlLCJwYXNzd29yZCI6IiQyYiQxMCRoTXVkME1JL3FNUC8wbUJLeGtrSVcuT3l3dTlNT05iL25ReWZaaEpZcnJxbE5uOHZxS2t1eSIsIm51bWVyb0N1ZW50YSI6Im5vIGluZGljYWRvIiwiY3JlYXRlZEF0IjoiMjAyMi0wMy0wMVQxNzo0NDoyNi4wMDBaIiwidXBkYXRlZEF0IjoiMjAyMi0wMy0wMVQxNzo0NDoyOS4wMDBaIn0sImlhdCI6MTY0NjE1NjY3MCwiZXhwIjoxNjQ2MzI5NDcwfQ.6p-pMw6oP2UvosEmOBRWcdB6Ur01swQreN6CRtNW7fY",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/pedidos",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"pedidos"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "borrar pedido por nombre",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7ImlkIjoxLCJub21icmUiOiJFRUVFRSIsImFwZWxsaWRvIjoib29vbyIsIm5pY2tuYW1lIjoiUHNjZW8iLCJlZGFkIjoyNSwiZW1haWwiOiJvb29vb29AZ21haWwuY29tIiwicm9sIjp0cnVlLCJwYXNzd29yZCI6IiQyYiQxMCRoTXVkME1JL3FNUC8wbUJLeGtrSVcuT3l3dTlNT05iL25ReWZaaEpZcnJxbE5uOHZxS2t1eSIsIm51bWVyb0N1ZW50YSI6Im5vIGluZGljYWRvIiwiY3JlYXRlZEF0IjoiMjAyMi0wMy0wMVQxNzo0NDoyNi4wMDBaIiwidXBkYXRlZEF0IjoiMjAyMi0wMy0wMVQxNzo0NDoyOS4wMDBaIn0sImlhdCI6MTY0NjE1NjY3MCwiZXhwIjoxNjQ2MzI5NDcwfQ.6p-pMw6oP2UvosEmOBRWcdB6Ur01swQreN6CRtNW7fY",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/pedidos/avanzado/usuarios/peru",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"pedidos",
+										"avanzado",
+										"usuarios",
+										"peru"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "borrar pedido por id",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7ImlkIjoxLCJub21icmUiOiJFRUVFRSIsImFwZWxsaWRvIjoib29vbyIsIm5pY2tuYW1lIjoiUHNjZW8iLCJlZGFkIjoyNSwiZW1haWwiOiJvb29vb29AZ21haWwuY29tIiwicm9sIjp0cnVlLCJwYXNzd29yZCI6IiQyYiQxMCRoTXVkME1JL3FNUC8wbUJLeGtrSVcuT3l3dTlNT05iL25ReWZaaEpZcnJxbE5uOHZxS2t1eSIsIm51bWVyb0N1ZW50YSI6Im5vIGluZGljYWRvIiwiY3JlYXRlZEF0IjoiMjAyMi0wMy0wMVQxNzo0NDoyNi4wMDBaIiwidXBkYXRlZEF0IjoiMjAyMi0wMy0wMVQxNzo0NDoyOS4wMDBaIn0sImlhdCI6MTY0NjE1NjY3MCwiZXhwIjoxNjQ2MzI5NDcwfQ.6p-pMw6oP2UvosEmOBRWcdB6Ur01swQreN6CRtNW7fY",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/pedidos/id/4",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"pedidos",
+										"id",
+										"4"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "PAGOS",
+			"item": [
+				{
+					"name": "CREATE",
+					"item": [
+						{
+							"name": "Crear pago",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7ImlkIjoyLCJub21icmUiOiJwZXIwIiwiYXBlbGxpZG8iOiJvb29vIiwibmlja25hbWUiOiJQbyIsImVkYWQiOjI1LCJlbWFpbCI6InBvQGdtYWlsLmNvbSIsInJvbCI6ZmFsc2UsInBhc3N3b3JkIjoiJDJiJDEwJGVMckgyV2xOcFU0dE1MSVZuM1ZMb2Uuck1tQUpOQk9VcVp3MTVKbnExUThCcFhkQlBOTVF1IiwibnVtZXJvQ3VlbnRhIjoibm8gaW5kaWNhZG8iLCJjcmVhdGVkQXQiOiIyMDIyLTAzLTAxVDE5OjA5OjE2LjAwMFoiLCJ1cGRhdGVkQXQiOiIyMDIyLTAzLTAxVDE5OjA5OjE2LjAwMFoifSwiaWF0IjoxNjQ2MTYxODQyLCJleHAiOjE2NDYzMzQ2NDJ9.w4CVQMCL_-eWNoK6dbIquzqpfb416AaCOyPajFEVbts",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\t\"tarjeta\": \"45453\",\r\n    \"paypal\":\"1424\",\r\n    \"usuarioId\": 1\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/pagos/nuevo",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"pagos",
+										"nuevo"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "UPDATE",
+					"item": [
+						{
+							"name": "Crear pago por id",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7ImlkIjoxLCJub21icmUiOiJFRUVFRSIsImFwZWxsaWRvIjoib29vbyIsIm5pY2tuYW1lIjoiUHNjZW8iLCJlZGFkIjoyNSwiZW1haWwiOiJvb29vb29AZ21haWwuY29tIiwicm9sIjp0cnVlLCJwYXNzd29yZCI6IiQyYiQxMCRoTXVkME1JL3FNUC8wbUJLeGtrSVcuT3l3dTlNT05iL25ReWZaaEpZcnJxbE5uOHZxS2t1eSIsIm51bWVyb0N1ZW50YSI6Im5vIGluZGljYWRvIiwiY3JlYXRlZEF0IjoiMjAyMi0wMy0wMVQxNzo0NDoyNi4wMDBaIiwidXBkYXRlZEF0IjoiMjAyMi0wMy0wMVQxNzo0NDoyOS4wMDBaIn0sImlhdCI6MTY0NjE1NjY3MCwiZXhwIjoxNjQ2MzI5NDcwfQ.6p-pMw6oP2UvosEmOBRWcdB6Ur01swQreN6CRtNW7fY",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\t\"tarjeta\": \"14\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/pagos/actualizar/4",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"pagos",
+										"actualizar",
+										"4"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "READ",
+					"item": [
+						{
+							"name": "leer pago por id",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7ImlkIjoxLCJub21icmUiOiJFRUVFRSIsImFwZWxsaWRvIjoib29vbyIsIm5pY2tuYW1lIjoiUHNjZW8iLCJlZGFkIjoyNSwiZW1haWwiOiJvb29vb29AZ21haWwuY29tIiwicm9sIjp0cnVlLCJwYXNzd29yZCI6IiQyYiQxMCRoTXVkME1JL3FNUC8wbUJLeGtrSVcuT3l3dTlNT05iL25ReWZaaEpZcnJxbE5uOHZxS2t1eSIsIm51bWVyb0N1ZW50YSI6Im5vIGluZGljYWRvIiwiY3JlYXRlZEF0IjoiMjAyMi0wMy0wMVQxNzo0NDoyNi4wMDBaIiwidXBkYXRlZEF0IjoiMjAyMi0wMy0wMVQxNzo0NDoyOS4wMDBaIn0sImlhdCI6MTY0NjE1NjY3MCwiZXhwIjoxNjQ2MzI5NDcwfQ.6p-pMw6oP2UvosEmOBRWcdB6Ur01swQreN6CRtNW7fY",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/pagos/leer/4",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"pagos",
+										"leer",
+										"4"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "DELETE",
+					"item": [
+						{
+							"name": "borrar pago por id",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7ImlkIjoxLCJub21icmUiOiJFRUVFRSIsImFwZWxsaWRvIjoib29vbyIsIm5pY2tuYW1lIjoiUHNjZW8iLCJlZGFkIjoyNSwiZW1haWwiOiJvb29vb29AZ21haWwuY29tIiwicm9sIjp0cnVlLCJwYXNzd29yZCI6IiQyYiQxMCRoTXVkME1JL3FNUC8wbUJLeGtrSVcuT3l3dTlNT05iL25ReWZaaEpZcnJxbE5uOHZxS2t1eSIsIm51bWVyb0N1ZW50YSI6Im5vIGluZGljYWRvIiwiY3JlYXRlZEF0IjoiMjAyMi0wMy0wMVQxNzo0NDoyNi4wMDBaIiwidXBkYXRlZEF0IjoiMjAyMi0wMy0wMVQxNzo0NDoyOS4wMDBaIn0sImlhdCI6MTY0NjE1NjY3MCwiZXhwIjoxNjQ2MzI5NDcwfQ.6p-pMw6oP2UvosEmOBRWcdB6Ur01swQreN6CRtNW7fY",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/pagos/borrar/4",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"pagos",
+										"borrar",
+										"4"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}
