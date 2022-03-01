@@ -1,5 +1,3 @@
-<a name="top"></a>
-
 # backend-peliculas
 
 <div align="center">
