@@ -1,15 +1,28 @@
 'use strict';
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Actors', {
+    await queryInterface.createTable('Pagos', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      name: {
+      tarjeta: {
         type: Sequelize.STRING
+      },
+      paypal: {
+        type: Sequelize.STRING
+      },
+      pagoId: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+          model: 'Usuarios',
+          key: 'id'
+        },
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE'
       },
       createdAt: {
         allowNull: false,
@@ -22,6 +35,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Actors');
+    await queryInterface.dropTable('Pagos');
   }
 };

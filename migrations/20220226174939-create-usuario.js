@@ -41,11 +41,7 @@ module.exports = {
       password: {
         type: Sequelize.STRING,
         allowNull: false
-      }, 
-      numeroCuenta: {
-        type: Sequelize.STRING,
-        defaultValue: "no indicado"
-      }, 
+      },  
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

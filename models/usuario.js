@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
       this.hasMany(models.Pedido, {
         foreignKey: 'usuarioId'
       });
-      this.hasOne(models.Payment, {
+      this.hasOne(models.Pago, {
         foreignKey: 'usuarioId'
       });
     }
@@ -26,8 +26,7 @@ module.exports = (sequelize, DataTypes) => {
     edad: DataTypes.INTEGER,
     email: DataTypes.STRING,
     rol: DataTypes.BOOLEAN,
-    password: DataTypes.STRING,
-    numeroCuenta:DataTypes.STRING
+    password: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'Usuario',
