@@ -27,7 +27,7 @@ PeliculasController.clonarPeliculas = async () => {
         let firstScan = await axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=${key}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate`)
         let numbOfPagesTMDB = firstScan.data.total_pages
         let numbOfFilmsTMDB = firstScan.data.total_results
-        for(let j=1 ; j<=25 ; j++) {
+        for(let j=1 ; j<=20 ; j++) {
             let results1 = await axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=${key}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${minMaxRoundedRandom(1, 25)}&with_watch_monetization_types=flatrate`);
             let numbOfResultsPerPageTMDB = results1.data.results.length
             for(let i=0; i<numbOfResultsPerPageTMDB ; i++) {
@@ -49,7 +49,7 @@ PeliculasController.clonarPeliculas = async () => {
             }
         }
 
-        return (`${25} páginas se han clonado con una cantidad de ${500} peliculas`)
+        return (`las páginas han sido clonadas`)
 };
 
 

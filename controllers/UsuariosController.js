@@ -187,8 +187,7 @@ UsuariosController.loginUsuarios = (req, res) => {
                 Usuario.token = token
                 res.json({
                     usuario: Usuario,
-                    token: token,
-                    loginSucces: true
+                    token: token
                 })
             } else {
                 res.status(401).json({ msg: "Usuario o contraseña inválidos" });
